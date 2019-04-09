@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelService } from '../hotel.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hotels-list',
@@ -11,12 +12,16 @@ export class HotelsListComponent implements OnInit {
   hotels = []
   tableHeaders = ['S.No', 'ID', 'Name', 'Image', 'Price', 'Address']
 
-  constructor(private hotelService: HotelService) { }
+  constructor(private hotelService: HotelService, private router: Router) { }
 
   async ngOnInit() {
     const hotels = await this.hotelService.getHotels()
     console.log(hotels);
     this.hotels = hotels['hotels'];
+  }
+  navigateToAddHotels() {
+
+    this.router.navigate(["hotelsList/addHotels"]);
   }
 
 }
