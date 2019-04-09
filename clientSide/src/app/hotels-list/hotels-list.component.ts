@@ -17,6 +17,7 @@ export class HotelsListComponent implements OnInit {
   async ngOnInit() {
     const hotels = await this.hotelService.getHotels()
     console.log(hotels);
+    // debugger;
     this.hotels = hotels['hotels'];
   }
   navigateToAddHotels() {

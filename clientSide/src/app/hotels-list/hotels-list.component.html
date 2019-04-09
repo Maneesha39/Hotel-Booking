@@ -1,4 +1,36 @@
-<div>
+<!-- <div>
   <app-hotels-table [data]="hotels" [tableHeaders]="tableHeaders"> </app-hotels-table>
+
+</div> -->
+
+
+<div style="margin-top:50px;margin-left:150px;margin-right:100px;">
+  <div *ngFor="let item of hotels">
+    <div class="card shadow p-2 mb-2 bg-white rounded" align="center">
+      <div class=" row card-body">
+
+        <div class="col-3" style="padding:20px;border-right:1px solid;width:200px;height:100px;">
+          <h4>{{item.image}}</h4>
+        </div>
+        <div class="col-3" style="padding:20px;margin-right:1px solid;border-right:1px solid">
+          <h4><span><strong>{{item.name}}</strong></span></h4><br>
+          <span>{{item.place}}</span>,
+          <span>{{item.landmark}}</span>,
+          <span>{{item.pincode}}</span>,
+          <span>{{item.mobile}}</span>
+        </div>
+        <div class="col-3" style="text-align:center;padding:20px;border-right:1px solid">
+          <h5>Price:{{item.price}}</h5>
+        </div>
+        <div class="col-3" style="padding:20px;">
+          <button type="button" class="btn btn-info">View Hotel</button>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
 
 </div>
