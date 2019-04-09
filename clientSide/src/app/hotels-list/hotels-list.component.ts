@@ -9,7 +9,7 @@ import { HotelService } from '../hotel.service';
 export class HotelsListComponent implements OnInit {
 
   hotels = []
-  tableHeaders = ['S.No', 'ID', 'Name', 'Image', 'Price', 'Address']
+  tableHeaders = ['S.No', 'Name', 'Image', 'price', 'Place', 'Land Mark', 'Pincode', 'Contact No.']
 
   constructor(private hotelService: HotelService) { }
 

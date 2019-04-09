@@ -6,7 +6,7 @@ const routes: Routes = [
 
 
   {
-    path: '',
+    path: 'hotels',
     component: HotelsListComponent
   }
 ];
