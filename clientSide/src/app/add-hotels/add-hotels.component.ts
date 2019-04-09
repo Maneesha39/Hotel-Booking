@@ -21,6 +21,7 @@ export class AddHotelsComponent implements OnInit {
       image: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.min(1), Validators.max(1000000)]],
       // address: ['', [Validators.minLength(11), Validators.maxLength(250)]],
+      // image: ['', [Validators.required]]
     });
   }
   get f() { return this.addHotelForm.controls; }
