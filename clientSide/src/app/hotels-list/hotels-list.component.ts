@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HotelService } from '../hotel.service';
 
 @Component({
   selector: 'app-hotels-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotelsListComponent implements OnInit {
 
-  constructor() { }
+  hotels = []
+  tableHeaders = ['S.No', 'ID', 'Name', 'Image', 'Price', 'Address']
 
-  ngOnInit() {
+  constructor(private hotelService: HotelService) { }
+
+  async ngOnInit() {
+    const hotels = await this.hotelService.getHotels()
+    console.log(hotels);
+    this.hotels = hotels['hotels'];
   }
 
 }

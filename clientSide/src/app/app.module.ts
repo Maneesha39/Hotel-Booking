@@ -8,21 +8,27 @@ import { HotelsListComponent } from './hotels-list/hotels-list.component';
 import { HotelDescriptionComponent } from './hotel-description/hotel-description.component';
 import { DemoMaterialModule } from '../../materialModule';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HotelsTableComponent } from './hotels-table/hotels-table.component';
+import { HotelService } from './hotel.service';
+import { HttpClientModule } from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HotelsListComponent,
-    HotelDescriptionComponent
+    HotelDescriptionComponent,
+    HotelsTableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DemoMaterialModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HotelService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
