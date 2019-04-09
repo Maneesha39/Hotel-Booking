@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -10,21 +10,25 @@ import { DemoMaterialModule } from '../../materialModule';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HotelsTableComponent } from './hotels-table/hotels-table.component';
 import { HotelService } from './hotel.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { AddHotelsComponent } from './add-hotels/add-hotels.component'
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HotelsListComponent,
     HotelDescriptionComponent,
-    HotelsTableComponent
+    HotelsTableComponent,
+    AddHotelsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DemoMaterialModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     HotelService

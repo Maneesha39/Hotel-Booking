@@ -11,4 +11,8 @@ export class HotelService {
   getHotels() {
     return this.http.get("http://localhost:3000/hotels").toPromise();
   }
+  insert(hotel: any) {
+    return this.http.post("http://localhost:3000/hotels", hotel).toPromise();
+  }
 }
+
