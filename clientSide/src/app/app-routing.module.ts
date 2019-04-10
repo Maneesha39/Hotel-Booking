@@ -16,7 +16,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'hotelsList/addHotels',
+    path: 'hotels/addhotels',
     component: AddHotelsComponent
   }
 ]
