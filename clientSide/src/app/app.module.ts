@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +14,10 @@ import { HotelsTableComponent } from './hotels-table/hotels-table.component';
 import { HotelService } from './hotel.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AddHotelsComponent } from './add-hotels/add-hotels.component'
+
+import { MatButtonModule } from '@angular/material';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +37,10 @@ import { AddHotelsComponent } from './add-hotels/add-hotels.component'
     FormsModule
   ],
   providers: [
-    HotelService
+    HotelService,
+
+    MatButtonModule
+
   ],
   bootstrap: [AppComponent]
 })
