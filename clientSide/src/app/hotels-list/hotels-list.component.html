@@ -9,8 +9,8 @@
     <div class="card shadow p-2 mb-2 bg-white rounded" align="center">
       <div class=" row card-body">
 
-        <div class="col-3" style="padding:20px;border-right:1px solid;width:200px;height:100px;">
-          <h4>{{item.image}}</h4>
+        <div class="col-3" style="padding:5px;border-right:1px solid;width:200px;height:100px;">
+          <img [src]="item.image" style="height:150px;width:150px">
         </div>
         <div class="col-3" style="padding:20px;margin-right:1px solid;border-right:1px solid">
           <h4><span><strong>{{item.name}}</strong></span></h4><br>
@@ -24,8 +24,6 @@
         </div>
         <div class="col-3" style="padding:20px;">
           <button type="button" class="btn btn-info">View Hotel</button>
-
-
         </div>
       </div>
 
