@@ -19,7 +19,12 @@ export class AddHotelsComponent implements OnInit {
     this.addHotelForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
       image: ['', [Validators.required]],
-      price: ['', [Validators.required, Validators.min(1), Validators.max(1000000)]],
+      price: ['', [Validators.required, Validators.min(1)]],
+      place: ['', [Validators.required, Validators.min(3)]],
+      landmark: ['', [Validators.required, Validators.min(3)]],
+      pincode: ['', [Validators.required, Validators.min(6), Validators.max(6)]],
+      mobile: ['', [Validators.required, Validators.min(10), Validators.max(10)]]
+
       // address: ['', [Validators.minLength(11), Validators.maxLength(250)]],
       // image: ['', [Validators.required]]
     });
