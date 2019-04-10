@@ -85,36 +85,4 @@
   }
 
   
-  /* .hidden{
-      opacity:0;
-  } */
-   /* @media only screen and (max-width: 768px) {
-    [class*="col-"] {
-      width: 100%;
-        float: left;
-        padding: 15px;
-      
-    }
-  } */
-/*   
-  .card::after {
-    content: "";
-    clear: both;
-    display: table;
-  } */
-
-/* input {
-    padding:10px;
-      font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-    border-radius: 0 !important;
-  }
   
-  .form-control {
-    border-radius: 0 !important;
-    font-size: 12x;
-  }
-  
-  .clickable { cursor: pointer; } */
