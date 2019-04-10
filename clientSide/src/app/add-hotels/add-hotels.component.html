@@ -1,0 +1,86 @@
+<div class="parent">
+  <div class="form-group">
+    <div class="card-header">ADD HOTEL</div>
+    <form [formGroup]="addHotelForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">Name is mandatory</div>
+          <div *ngIf="f.name.errors.minlength"> Name should be minimum of 3 characters</div>
+          <div *ngIf="f.name.errors.maxlength"> Name should be maximum of 100 characters</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Image</label>
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label>Price</label>
+        <input type="number" formControlName="price" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+        <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+          <div *ngIf="f.price.errors.required">Price is required</div>
+          <div *ngIf="f.price.errors.min"> Price should be greater than zero</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Place</label>
+        <input type="text" formControlName="place" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.place.errors }" />
+        <div *ngIf="submitted && f.place.errors" class="invalid-feedback">
+          <div *ngIf="f.place.errors.required">Place is mandatory</div>
+          <div *ngIf="f.place.errors.minlength"> Place should be minimum of 3 characters</div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Landmark</label>
+        <input type="text" formControlName="landmark" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.landmark.errors }" />
+        <div *ngIf="submitted && f.landmark.errors" class="invalid-feedback">
+          <div *ngIf="f.landmark.errors.required">Landmark is mandatory</div>
+          <div *ngIf="f.landmark.errors.minlength"> Landmark should be minimum of 3 characters</div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Pincode</label>
+        <input type="text" formControlName="pincode" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }" />
+        <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
+          <div *ngIf="f.pincode.errors.required">Pincode is mandatory</div>
+          <div *ngIf="f.pincode.errors.minlength"> Pincode must contain only 6 digits</div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="text" formControlName="mobile" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
+        <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+          <div *ngIf="f.mobile.errors.required">Contact Number is mandatory</div>
+          <div *ngIf="f.mobile.errors.minlength"> Contact Number must contain only 10 digits</div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg" style="margin-left: 50px;">SUBMIT</button>
+      </div>
+    </form>
+  </div>
+</div>

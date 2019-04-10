@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material';
     HomeComponent,
     HotelsListComponent,
     HotelDescriptionComponent
+
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,6 @@ import { MatButtonModule } from '@angular/material';
     MatButtonModule,
 
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
