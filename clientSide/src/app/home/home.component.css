@@ -1,0 +1,120 @@
+.active-pink-2 input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #f48fb1;
+    box-shadow: 0 1px 0 0 #f48fb1;
+    }
+
+.total{
+   height:100%;
+   width: 100%;
+    /* background:   url("C:\Users\Administrator\Desktop\Hotel-Booking-Angular\clientSide\src\assets\bg.jpg"); */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+.card{
+    height:260px;
+     width:1000px;
+    background-color:pink;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 2px solid black;
+    transform: translate(-50%, -50%);
+}
+
+#details{
+    display:none;
+    background-color: blue;
+}
+  
+   @media only screen and (min-width: 1000px) {
+    .total {
+      background-color: lightseagreen;
+    }
+  } 
+  /* @media screen and (max-width: 1000px) {
+    .test {
+      width: 100%;
+   
+    }
+  } */
+  @media screen and (min-width: 600px) and (max-width: 1000px) {
+    .main {
+      flex-direction: column;
+      width: 75%;
+    }
+    .card{
+      height: 600px;
+      width: 500px;
+    }
+    #details{
+      margin-right:600px;  
+      margin-top: -1000px;
+    }
+    .total{
+      background-color: darkred;
+    }
+    .btn-primary{
+      height: 50px;
+      width: 200px;
+    }
+    .test1{
+      flex-direction: row;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .main {
+      flex-direction: column;
+      width: 75%;
+    }
+    .card{
+      height: 600px;
+      width:300px;
+    }
+    #details{
+      margin-right:600px;  
+    }
+    .total{
+      background-color: darkgoldenrod;
+    }
+    .btn-primary{
+      height: 50px;
+      width: 200px;
+    }
+  }
+
+  
+  /* .hidden{
+      opacity:0;
+  } */
+   /* @media only screen and (max-width: 768px) {
+    [class*="col-"] {
+      width: 100%;
+        float: left;
+        padding: 15px;
+      
+    }
+  } */
+/*   
+  .card::after {
+    content: "";
+    clear: both;
+    display: table;
+  } */
+
+/* input {
+    padding:10px;
+      font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    border-radius: 0 !important;
+  }
+  
+  .form-control {
+    border-radius: 0 !important;
+    font-size: 12x;
+  }
+  
+  .clickable { cursor: pointer; } */
