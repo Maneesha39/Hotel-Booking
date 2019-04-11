@@ -24,8 +24,8 @@ import { MatButtonModule } from '@angular/material';
     HomeComponent,
     HotelsListComponent,
     HotelDescriptionComponent,
-    HotelsTableComponent,
     AddHotelsComponent
+
   ],
   imports: [
     BrowserModule,

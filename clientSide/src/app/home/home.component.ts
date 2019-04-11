@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import * as $ from "jquery";
 import { now } from 'jquery';
 import { style } from '@angular/animations';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 
@@ -12,25 +13,46 @@ import { style } from '@angular/animations';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  minDate = new Date();
+  mainForm: FormGroup;
+  submitted: Boolean = false;
   // now = new Date(this.nowTemp.getFullYear(), this.nowTemp.getMonth(), this.nowTemp.getDate(), 0, 0, 0, 0);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, ) { }
 
   ngOnInit() {
 
+    this.mainForm = this.formBuilder.group({
+      // Validating fields...
+      place: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
 
-  }
-  totalGuests() {
-    let persons = document.getElementById("details");
-    persons.style.display = "block";
+      checkin: ['', [Validators.required]],
+
+      checkout: ['', [Validators.required]]
+    });
   }
 
-  clicked() {
-    let persons = document.getElementById("details");
+  get f() { return this.mainForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+    if (this.mainForm.invalid) {
+      alert("Enter details");
+    }
+  }
+  done() {
+    let persons = document.getElementById("getmail");
     persons.style.display = "none";
+    document.getElementById("enable").style.display = "block";
   }
 }
+//   done() {
+//     let persons = document.getElementById("details");
+//     persons.style.display = "none";
+//   }
+// }
+
+
+// }
     // var checkin = $('#dp1').datepicker({
 
     //   beforeShowDay: function (date) {
