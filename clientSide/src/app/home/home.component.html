@@ -21,6 +21,12 @@
     </span>
   </nav>
 </div>
+
+<!-- <label for="typeahead-basic">Search for a state:</label> -->
+<!-- <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />
+<hr> -->
+<!-- <pre>Model: {{ model | json }}</pre> -->
+
 <div class="total" style=" border: 2px solid black;">
   <img class="define" src="assets/bg8.jpg">
   <div class="card"><br>
@@ -30,9 +36,13 @@
         <!-- entire control is sent to formgroup -->
 
         <div class="form-group">
-          <label>Place</label>
-          <input type="text" formControlName="place" class="form-control" placeholder="Enter place"
-            [ngClass]="{ 'is-invalid': submitted && f.place.errors }">
+          <!-- <label>Place</label> -->
+          <label for="typeahead-basic">Select City:</label>
+          <!-- <input type="text" formControlName="place" class="form-control" placeholder="Enter place"
+            [ngClass]="{ 'is-invalid': submitted && f.place.errors }"> -->
+          <input id="typeahead-basic" type="text" class="form-control" formControlName="place"
+            [ngbTypeahead]="search" />
+          <pre>Model: {{ place | json }}</pre>
           <div *ngIf="submitted && f.place.errors" class="invalid-feedback">
             <div *ngIf="f.place.errors.required">Name is required</div>
           </div>
