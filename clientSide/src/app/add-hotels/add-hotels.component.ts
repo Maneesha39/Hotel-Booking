@@ -12,20 +12,20 @@ export class AddHotelsComponent implements OnInit {
   addHotelForm: FormGroup;
 
   submitted: Boolean = false;
-  hotelService: any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+
+  constructor(private router: Router, private formBuilder: FormBuilder, private hotelService: HotelService) { }
 
   ngOnInit() {
     this.addHotelForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
       image: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.min(1)]],
-      place: ['', [Validators.required, Validators.min(3), Validators.max(50)]],
-      landmark: ['', [Validators.required, Validators.min(3), Validators.max(100)]],
-      pincode: ['', [Validators.required, Validators.min(6), Validators.max(6)]],
-      mobile: ['', [Validators.required, Validators.min(10), Validators.max(10)]],
-      city: ['', [Validators.required, Validators.min(3), Validators.max(30)]]
+      place: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      landmark: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      pincode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+      mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      city: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]]
 
     });
 
@@ -37,6 +37,7 @@ export class AddHotelsComponent implements OnInit {
   async onSubmit() {
     try {
       this.submitted = true;
+      debugger;
       if (this.addHotelForm.invalid) return
       await this.hotelService.insert(this.addHotelForm.value)
       alert("Hotels Successfully Inserted ")
@@ -48,7 +49,7 @@ export class AddHotelsComponent implements OnInit {
   }
 
   navigateTohotelsList() {
-    this.router.navigate(["hotel-list"]);
+    this.router.navigate(['hotels']);
   }
 }
 

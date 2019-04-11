@@ -16,26 +16,17 @@
             </div>
           </div>
 
-          <!-- <div class="form-group">
-            <label>Upload Image</label>
-            <input type="file" class="custom-file-input" id="customFile" class="form-control" formControlName="image"
-              placeholder="Choose Image File" [ngClass]="{ 'is-invalid': submitted && f.image.errors }">
-            <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-              <div *ngIf="f.image.errors.required">Image is required</div>
-
-            </div>
-          </div> -->
           <div class="form-group">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" formControlName="image" class="form-control" id="customFile"
-                [ngClass]="{'is-invalid':submitted&&f.image.errors}" />
-              <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-                <div *ngIf="f.image.errors.required">Image upload is mandatory</div>
+            <label>Image URL</label>
+            <input type="text" formControlName="image" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.image.errors }" />
+            <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+              <div *ngIf="f.image.errors.required">Image URL is mandatory</div>
 
-              </div>
-              <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
           </div>
+
+
 
           <div class="form-group">
             <label>Price</label>
@@ -78,7 +69,7 @@
             <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
               <div *ngIf="f.pincode.errors.required">Pincode is mandatory</div>
               <div *ngIf="f.pincode.errors.minlength"> Pincode must contain only 6 digits</div>
-
+              <div *ngIf="f.pincode.errors.maxlength"> Pincode must not exceed 6 digits</div>
             </div>
           </div>
 
@@ -89,7 +80,7 @@
             <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
               <div *ngIf="f.mobile.errors.required">Contact Number is mandatory</div>
               <div *ngIf="f.mobile.errors.minlength"> Contact Number must contain only 10 digits</div>
-
+              <div *ngIf="f.mobile.errors.maxlength"> Contact Number must not exceed 10 digits</div>
             </div>
           </div>
 
@@ -105,7 +96,7 @@
           </div>
 
           <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg" style="margin-left: 50px;">SUBMIT</button>
+            <button type="submit" class="btn btn-primary btn-md">SUBMIT</button>
           </div>
         </form>
       </div>
