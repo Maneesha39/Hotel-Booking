@@ -23,7 +23,8 @@ import { MatButtonModule } from '@angular/material';
     AppComponent,
     HomeComponent,
     HotelsListComponent,
-    HotelDescriptionComponent
+    HotelDescriptionComponent,
+    AddHotelsComponent
 
   ],
   imports: [
