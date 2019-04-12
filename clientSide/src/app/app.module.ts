@@ -8,6 +8,7 @@ import { HotelsListComponent } from './hotels-list/hotels-list.component';
 import { HotelDescriptionComponent } from './hotel-description/hotel-description.component';
 import { DemoMaterialModule } from '../../materialModule';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     DemoMaterialModule,
+    FormsModule,
     BrowserAnimationsModule
 
   ],

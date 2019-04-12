@@ -1,3 +1,93 @@
-<p>
-  home works!
-</p>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="total">
+<img class = "define" src = "assets/hotelimage.jpg">
+  <div class="card" >
+    <div class="card-header text-center" style = "background-color: darkgoldenrod; margin-top:20px">
+      <h4 >BOOK NOW</h4>
+    </div>
+    <br>
+
+    <div style="display: flex">
+
+      <div>
+        <label>Destination</label><br>
+        <input style="margin-top:15px" class="form-control form-control-sm mr-3" type="text" placeholder="Enter here"
+          aria-label="Search" mdbInput>
+
+      </div>
+      &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+
+       <div class = "btn-horus">
+        <label>Check-In</label><br>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      &nbsp; &nbsp;
+      <div>
+        <label>Check-Out</label><br>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker1" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div> <br>
+    <div style="display: flex">
+      <div style="margin-top: 20px">
+        <i class="fas fa-users"></i>
+        <label>Guests</label>
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div>
+        <mat-form-field>
+          <mat-label>Rooms</mat-label>
+          <mat-select rooms value="">
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      &nbsp; &nbsp;
+      <div>
+        <mat-form-field>
+          <mat-label>Adult</mat-label>
+          <mat-select member value="">
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      &nbsp; &nbsp;
+      <div>
+        <mat-form-field>
+          <mat-label>Children</mat-label>
+          <mat-select children value="">
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div><br>
+  
+
+    <button class="btn btn-primary">SEARCH</button> 
+  </div>
+  
+</div>
