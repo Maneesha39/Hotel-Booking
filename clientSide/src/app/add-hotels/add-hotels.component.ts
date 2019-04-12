@@ -10,30 +10,34 @@ import { HotelService } from '../hotel.service';
 })
 export class AddHotelsComponent implements OnInit {
   addHotelForm: FormGroup;
-  submitted: Boolean = false;
-  hotelService: any;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+  submitted: Boolean = false;
+
+
+  constructor(private router: Router, private formBuilder: FormBuilder, private hotelService: HotelService) { }
 
   ngOnInit() {
     this.addHotelForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
       image: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.min(1)]],
-      place: ['', [Validators.required, Validators.min(3)]],
-      landmark: ['', [Validators.required, Validators.min(3)]],
-      pincode: ['', [Validators.required, Validators.min(6), Validators.max(6)]],
-      mobile: ['', [Validators.required, Validators.min(10), Validators.max(10)]]
+      place: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      landmark: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      pincode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+      mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      city: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]]
 
-      // address: ['', [Validators.minLength(11), Validators.maxLength(250)]],
-      // image: ['', [Validators.required]]
     });
+
+
+
   }
   get f() { return this.addHotelForm.controls; }
 
   async onSubmit() {
     try {
       this.submitted = true;
+      debugger;
       if (this.addHotelForm.invalid) return
       await this.hotelService.insert(this.addHotelForm.value)
       alert("Hotels Successfully Inserted ")
@@ -45,7 +49,7 @@ export class AddHotelsComponent implements OnInit {
   }
 
   navigateTohotelsList() {
-    this.router.navigate(["hotels-list"]);
+    this.router.navigate(['hotels']);
   }
 }
 
