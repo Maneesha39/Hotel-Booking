@@ -17,6 +17,7 @@ import { AddHotelsComponent } from './add-hotels/add-hotels.component'
 
 import { MatButtonModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddroomComponent } from './addroom/addroom.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     HotelsListComponent,
     HotelDescriptionComponent,
-    AddHotelsComponent
+    AddHotelsComponent,
+    AddroomComponent
 
 
   ],

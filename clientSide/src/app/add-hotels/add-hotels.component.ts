@@ -25,7 +25,8 @@ export class AddHotelsComponent implements OnInit {
       landmark: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       pincode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
       mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      city: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]]
+      city: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      rooms: ['', [Validators.required, Validators.min(1)]]
 
     });
 
