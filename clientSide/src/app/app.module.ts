@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddHotelsComponent } from './add-hotels/add-hotels.component'
 
 import { MatButtonModule } from '@angular/material';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,9 @@ import { MatButtonModule } from '@angular/material';
     HomeComponent,
     HotelsListComponent,
     HotelDescriptionComponent,
-    HotelsTableComponent,
     AddHotelsComponent
+
+
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,8 @@ import { MatButtonModule } from '@angular/material';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [
     HotelService,

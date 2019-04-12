@@ -11,6 +11,7 @@ export class HotelsListComponent implements OnInit {
 
   hotels = []
   tableHeaders = ['S.No', 'Name', 'Image', 'price', 'Place', 'Land Mark', 'Pincode', 'Contact No.']
+  image = ""
 
   constructor(private hotelService: HotelService, private router: Router) { }
 
@@ -18,6 +19,7 @@ export class HotelsListComponent implements OnInit {
     const hotels = await this.hotelService.getHotels()
     console.log(hotels);
     // debugger;
+
     this.hotels = hotels['hotels'];
   }
   navigateToAddHotels() {

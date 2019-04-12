@@ -17,7 +17,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'hotels/addhotels',
+    path: 'hotels/addhotel',
     component: AddHotelsComponent
   },
 

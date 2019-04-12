@@ -1,124 +1,115 @@
-<!-- <div class="row" style="border: 1px solid black;">
-  <div class="col-2" style="border: 1px solid black;">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <form class="form-inline md-form form-sm active-pink-2">
-          <input class="form-control form-control-sm mr-3 " type="text" placeholder="Search" aria-label="Search"
-            mdbInput>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="col-3">
-    <div class="input-group mb-3">
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
-  </div>
+<div style="background-color:#9b9baf00;  height: 50px; width:100%;">
 
-  <div class="col-3">
-    <div class="input-group mb-3">
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker1" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="col-3">
-    <button class="btn" style="background-color: chocolate; margin-left:50px;">SEARCH</button>
-  </div>
-</div> -->
+  <nav class="topnav">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <span style="display:flex ;margin-left:900px;">
+
+      <li class="nav-link"><span style="display:flex;"><i class="fa fa-fw fa-home"></i>
+          <p class="nav-link" style="margin-top:-10px;" (click)="users()">Home</p>
+        </span>
+      </li>
+      <li class="nav-link"><span style="display:flex;"><i class="fa fa-fw fa-address-book"></i>
+          <p class="nav-link" style="margin-top:-10px;" (click)="products()">About</p>
+        </span>
+      </li>
+      <li class="nav-link"><span style="display:flex;"><i class="fa fa-fw fa-envelope"></i>
+          <p class="nav-link" style="margin-top:-10px;" (click)="addProducts()">Contact Us</p>
+
+        </span>
+      </li>
+
+    </span>
+  </nav>
+</div>
+
+<!-- <label for="typeahead-basic">Search for a state:</label> -->
+<!-- <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />
+<hr> -->
+<!-- <pre>Model: {{ model | json }}</pre> -->
 
 <div class="total" style=" border: 2px solid black;">
+  <img class="define" src="assets/bg8.jpg">
+  <div class="card"><br>
+    <div class="main">
 
-  <div class="card">
-    <div class="card-header" style="background:beige;">
-      <h4>BOOK NOW</h4>
-    </div><br><br>
-    <span class="main" style="display: flex">
-      <div class="test">
-        <form class="form-inline md-form form-sm active-pink-2" style="margin-top: 30px;">
-          <input class="form-control form-control-sm mr-3 " type="text" placeholder="Enter place" aria-label="Search"
-            mdbInput>
-        </form>
-      </div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <form [formGroup]="mainForm" (ngSubmit)="onSubmit()">
+        <!-- entire control is sent to formgroup -->
 
-      <div class="test row">
-        <div class="test1">
-          <label>Check-In</label><br>
-          <!-- <md-datepicker ng-model="myDate" md-placeholder="date" md-min-date="newDate()"></md-datepicker> -->
-          <mat-form-field>
-            <input matInput [matDatepicker]="picker" min-date="minDate" placeholder="Choose a date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+        <div class="form-group">
+          <!-- <label>Place</label> -->
+          <label for="typeahead-basic">Select City:</label>
+          <!-- <input type="text" formControlName="place" class="form-control" placeholder="Enter place"
+            [ngClass]="{ 'is-invalid': submitted && f.place.errors }"> -->
+          <input id="typeahead-basic" type="text" class="form-control" formControlName="place"
+            [ngbTypeahead]="search" />
+          <pre>Model: {{ place | json }}</pre>
+          <div *ngIf="submitted && f.place.errors" class="invalid-feedback">
+            <div *ngIf="f.place.errors.required">Name is required</div>
+          </div>
         </div>
-        &nbsp;&nbsp; &nbsp;&nbsp;
 
-        <div class="test1">
-          <label>Check-Out</label><br>
-          <mat-form-field>
-            <input matInput [matDatepicker]="picker1" placeholder="Choose a date">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-          </mat-form-field>
-        </div>
-      </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-      <div class="test">
-        <button class="btn btn-primary" style="margin-top: 20px;">SEARCH</button>
-      </div>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-      <div class="test" style="margin-top:10px;">
-        <button class="mat-button" style="margin-top:10px;" (click)="totalGuests()">
-          <i class="fas fa-users"></i>
-          <span class="btn btn-horus">Guests</span>
-        </button>
-      </div>
-    </span>
-
-
-    <div id="details" style=" border:1px solid black; height:180px; width:300px; margin-top:-20px; margin-left:970px; ">
-      <div style="margin-left:40px; margin-top:10px;">
-        <span style="display:flex;">
-          <div class="selectBoxWrap"><label class="ico13 db padB5">Room(s)</label>
-            <div class="customSelect"><select name="Room(s)">
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select></div>
+        <div class="form-group>">
+          <label>Check-In</label>
+          <input type="date" formControlName="checkin" class="form-control"
+            [ngClass]="{ 'is-insvalid': submitted && f.checkin.errors }" />
+          <div *ngIf="submitted && f.checkin.errors" class="invalid-feedback">
+            <div *ngIf="f.checkin.errors.required">Check-In date is required</div>
           </div>
-          <div class="selectBoxWrap" style="margin-left:30px;"><label class="ico13 db padB5">Adult(s)</label>
-            <div class="customSelect"><select name="Adult">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select></div>
-          </div>
-          <div class="selectBoxWrap" style="margin-left:30px;"><label class="ico13 db padB5">Children</label>
-            <div class="customSelect"><select name="children">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select></div>
-          </div>
-        </span>
-      </div> <br>
+        </div><br>
 
-      <button class="btn btn-secondary" style="margin-left:120px;margin-bottom: 10px;" (click)="clicked()">Done</button>
+        <div class="form-group">
+          <label>Check-Out</label>
+          <input type="date" formControlName="checkout" class="form-control"
+            [ngClass]="{ 'is-insvalid': submitted && f.checkout.errors }" />
+          <div *ngIf="submitted && f.checkout.errors" class="invalid-feedback">
+            <div *ngIf="f.checkout.errors.required">Check-Out date is required</div>
+          </div>
+        </div><br>
+
+        <div style=" margin-top:10px; border:1px solid black;">
+          <div class="form-group">
+            <span style="display:flex;padding: 10px;">
+
+              <div class="selectBoxWrap" style="margin-left:10px;"><label class="ico13 db padB5">Room(s)</label>
+                <div class="customSelect"><select name="Room">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select></div>
+              </div>
+              <div class="selectBoxWrap" style="margin-left:30px;"><label class="ico13 db padB5">Adult(s)</label>
+                <div class="customSelect"><select name="Adult">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select></div>
+              </div>
+              <div class="selectBoxWrap" style="margin-left:30px;"><label class="ico13 db padB5">Children</label>
+                <div class="customSelect"><select name="children">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select></div>
+              </div>
+            </span>
+          </div>
+        </div><br>
+        <button type="submit" class="btn btn-primary btn-lg" style="margin-left:80px;">SEARCH</button>
+      </form>
     </div>
   </div>
-
-
-  <!--  <div class="form-group">
-  <input id="dp1" type="text" class="form-control clickable input-md" id="DtChkIn" placeholder="&#xf133;  Check-In">
 </div>
-<div class="form-group">
-  <input id="dp2" type="text" class="form-control clickable input-md" id="DtChkOut" placeholder="&#xf133;  Check-Out">
-</div> -->
+<div class="footer">
+  <div class="text">
+    <h3>Looking for travel inspiration?
+    </h3>
+    <h5>Luckily, our newsletter’s got it in spades & it can be delivered to your inbox</h5>
+  </div>
+  <div style="margin-left:800px; margin-top:-40px;">
+    <div id="getmail">
+      <input type="text" id="mail" name="subcribe" placeholder="enter your email id">&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-warning" (click)="done()">Subscribe</button>
+    </div>
+    <div id="enable">Subscribed Successfully</div>
+  </div>
+</div>
