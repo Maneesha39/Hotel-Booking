@@ -17,28 +17,53 @@
     filter: alpha(opacity=50);
     width:100%;
   }
-  .define:hover{
+  /* .define:hover{
     opacity: 0.8;
     filter:alpha(opacity=50);
-  }
-.card{
+  } */
+#maincard{
     height:550px;
      width:350px;
-    background-color:transparent;
     position: absolute;
     align-items: center; 
     top: 50%;
     left: 50%;
- 
+    background-color: white;
+    opacity:0.8;
+    margin-top:40px;
+    transform: translate(-50%, -50%);      
+}
+#about
+{
+    height:500px;
+    width:850px;
+    background-color:white;
+    position: absolute;
+    align-items: center; 
+    top: 50%;
+    left: 50%;
     margin-top:40px;
     transform: translate(-50%, -50%);
-    opacity:1;
-    filter:alpha(opacity=50);
+    display:none;
+    opacity:0.7;
 }
 
+#contact{
+  height:350px;
+  width:650px;
+  position: absolute;
+  align-items: center; 
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  opacity:0.8;
+  margin-top:40px;
+  transform: translate(-50%, -50%);  
+  display:none;    
+}
 .nav-link:hover{
   cursor: pointer;
-  color: white;
+  color: brown;
 }
 
 label{
@@ -47,16 +72,14 @@ label{
 .footer{
   border:2px solid black; 
   height:150px; 
-  background-color:#e1bee7;
+  background-color:#bdbdbd;
 }
   .text{
     margin-top:40px;
     margin-left:100px;
   }
-  #getmail{
-    display:block;
-  }
-  #enable{
+  
+  #success{
     display:none;
   }
  
