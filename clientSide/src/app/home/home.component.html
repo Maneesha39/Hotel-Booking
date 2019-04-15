@@ -1,36 +1,89 @@
-<div style="background-color:#9b9baf00;  height: 50px; width:100%;">
+<div style="background-color:#bdbdbd;  height: 50px; width:100%;">
 
   <nav class="topnav">
 
-    <span style="display:flex ;margin-left:900px;">
+    <span style="display:flex ;margin-left:900px; ">
 
       <li class="nav-link"><span style="display:flex;"><i class="fa fa-fw fa-home"></i>
-          <p class="nav-link" style="margin-top:-10px;" (click)="users()">Home</p>
+          <p class="nav-link" style="margin-top:-10px;" (click)="toHome()">Home</p>
         </span>
       </li>
       <li class="nav-link"><span style="display:flex;"><i class="fa fa-fw fa-address-book"></i>
-          <p class="nav-link" style="margin-top:-10px;" (click)="products()">About</p>
+          <p class="nav-link" style="margin-top:-10px;" (click)="aboutUs()">About</p>
         </span>
       </li>
       <li class="nav-link"><span style="display:flex;"><i class="fa fa-fw fa-envelope"></i>
-          <p class="nav-link" style="margin-top:-10px;" (click)="addProducts()">Contact Us</p>
+          <p class="nav-link" style="margin-top:-10px;" (click)="contactUs()">Contact Us</p>
 
         </span>
       </li>
-
     </span>
   </nav>
 </div>
 
-<!-- <label for="typeahead-basic">Search for a state:</label> -->
-<!-- <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />
-<hr> -->
-<!-- <pre>Model: {{ model | json }}</pre> -->
-
 <div class="total" style=" border: 2px solid black;">
+  <div class="card" id="about">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6  text-center" style="margin-top:30px;">
+          <h1 class="card-title">WHO ARE WE</h1>
+        </div>
+        <div class="col-6">
+          <h4 class="card-title">We are a diverse team of over 1,200+ entrepreneurs, equipped with both the tech and
+            the passion to help our users find their ideal hotel,
+            in 55 global regions and 33 different languages.</h4>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-left:20px; margin-left:20px;">
+      <h4>Our team of creative and driven entrepreneurs come together to build a hotel search that is fast,
+        intuitive and unbiased, with the longstanding mission…</h4>
+
+      <h2> To be the traveler’s first and independent source of information for finding the ideal hotel.</h2>
+
+      <h4> We enable all our advertisers, from independent hoteliers to the largest hotel chains,
+        to grow their businesses by accessing our broad audience of monthly users.</h4>
+    </div>
+  </div>
+
+  <div class="card" id="contact">
+    <span style="display:flex;margin-top:40px; margin-left:40px;">
+      <h3>For any enquiry call...</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="fas fa-mobile-alt" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
+      <h3>9876543210</h3>
+    </span><br>
+    <span style="display:flex; margin-left:240px;">
+      <h3>mail... </h3>&nbsp;&nbsp;&nbsp;
+      <i class="fa fa-fw fa-envelope" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
+      <h3>abc@gmail.com</h3>
+    </span>
+    <hr>
+    <nav class="topnav">
+      <h3 style="margin-left:270px;">Follow us on</h3><br>
+      <span style="display:flex;">
+
+        <li class="nav-link"><i class="fab fa-facebook" style="font-size:60px; margin-left:30px;"></i>
+        </li>
+
+        <li class="nav-link"><i class="fa fa-fw fa-envelope" style="font-size:60px; margin-left:30px;"></i>
+        </li>
+
+        <li class="nav-link"><i class="fab fa-twitter-square" style="font-size:60px; margin-left:30px;"></i>
+        </li>
+
+        <li class="nav-link"><i class="fab fa-instagram" style="font-size:60px; margin-left:30px;"></i>
+        </li>
+
+        <li class="nav-link"><i class="fab fa-youtube" style="font-size:60px; margin-left:30px;"></i>
+        </li>
+      </span>
+    </nav>
+  </div>
+
   <img class="define" src="assets/bg8.jpg">
-  <div class="card"><br>
-    <div class="main">
+  <div class="card" id="maincard"><br>
+    <div class="main" id="insidecard">
 
       <form [formGroup]="mainForm" (ngSubmit)="onSubmit()">
         <!-- entire control is sent to formgroup -->
@@ -75,6 +128,15 @@
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
                   </select></div>
               </div>
               <div class="selectBoxWrap" style="margin-left:30px;"><label class="ico13 db padB5">Adult(s)</label>
@@ -82,6 +144,9 @@
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
                   </select></div>
               </div>
               <div class="selectBoxWrap" style="margin-left:30px;"><label class="ico13 db padB5">Children</label>
@@ -89,27 +154,41 @@
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
                   </select></div>
               </div>
             </span>
           </div>
         </div><br>
-        <button type="submit" class="btn btn-primary btn-lg" style="margin-left:80px;">SEARCH</button>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-lg" style="margin-left:80px;">SEARCH</button></div>
       </form>
     </div>
   </div>
 </div>
-<div class="footer">
+<div class="footer" id="footer1">
   <div class="text">
     <h3>Looking for travel inspiration?
     </h3>
     <h5>Luckily, our newsletter’s got it in spades & it can be delivered to your inbox</h5>
   </div>
-  <div style="margin-left:800px; margin-top:-40px;">
-    <div id="getmail">
-      <input type="text" id="mail" name="subcribe" placeholder="enter your email id">&nbsp;&nbsp;&nbsp;&nbsp;
-      <button type="button" class="btn btn-warning" (click)="done()">Subscribe</button>
+  <div id="getmail">
+    <div style="margin-left:800px; margin-right:50px; margin-top:-70px;">
+      <form [formGroup]="footerForm" (ngSubmit)="onClick()">
+        <div class="form-group">
+          <input type="text" id="mail" formControlName="mailcheck" class="form-control"
+            placeholder="enter your email id" [ngClass]="{ 'is-insvalid': submittedFooter && g.mailcheck.errors }">
+          <div *ngIf="submittedFooter && g.mailcheck.errors" class="invalid-feedback">
+            <div *ngIf="g.mailcheck.errors.required">Please enter mail id</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-warning">Subscribe</button>
+        </div>
+        <div id="success">Subscribed Successfully</div>
+      </form>
     </div>
-    <div id="enable">Subscribed Successfully</div>
   </div>
 </div>
