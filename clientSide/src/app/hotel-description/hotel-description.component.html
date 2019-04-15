@@ -1,2 +1,12 @@
 ID: {{desc}}
 <app-hotels-list (selected)="onSelect($event)"></app-hotels-list>
+<div class="card mb-3">
+  <p class="card">{{item.image}}</p>
+  <div class="card-body">
+    <h5 class="card-title">{{item.name}}</h5>
+    <p class="card-text">{{item.place}}</p>
+    <p class="card-text">{{item.landmark}}</p>
+    <p class="card-text">{{item.pincode}}</p>
+    <p class="card-text">{{item.mobile}}</p>
+  </div>
+</div>

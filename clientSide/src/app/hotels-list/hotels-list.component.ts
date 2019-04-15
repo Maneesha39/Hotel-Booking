@@ -25,7 +25,10 @@ export class HotelsListComponent implements OnInit {
   }
   navigateToAddHotels() {
 
-    this.router.navigate(["hotelsList/addHotels"]);
+    this.router.navigate(["hotels/addhotels"]);
+  }
+  navigateToHotelDescription() {
+    this.router.navigate(["hotels/hoteldesc"]);
   }
 
   onSelect(id) {
