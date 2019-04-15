@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HotelService } from '../hotel.service';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./hotels-list.component.css']
 })
 export class HotelsListComponent implements OnInit {
+  @Output() selected = new EventEmitter();
 
   hotels = []
   tableHeaders = ['S.No', 'Name', 'Image', 'price', 'Place', 'Land Mark', 'Pincode', 'Contact No.']
@@ -26,5 +27,13 @@ export class HotelsListComponent implements OnInit {
 
     this.router.navigate(["hotelsList/addHotels"]);
   }
+
+  onSelect(id) {
+
+    this.selected.emit(id);
+    //this.router.navigate([`hotels/hoteldetails`])
+  }
+
+
 
 }

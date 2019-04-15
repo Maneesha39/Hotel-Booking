@@ -22,7 +22,8 @@
         <!-- <div class="col-3"></div> -->
         <div class="col-4" style="text-align:right;padding:20px">
           <br><br>
-          <p>{{item.price|currency:'INR'}}</p><button type="button" class="btn btn-success">Book Now</button>
+          <p>{{item.price|currency:'INR'}}</p>
+          <button type="button" class="btn btn-success" (click)="onSelect(item.id)">View Hotel</button>
         </div>
       </div>
 

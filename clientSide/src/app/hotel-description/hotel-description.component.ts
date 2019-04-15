@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-hotel-description',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hotel-description.component.css']
 })
 export class HotelDescriptionComponent implements OnInit {
+  desc: number;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelect($event) {
+
+    this.desc = $event;
   }
 
 }
