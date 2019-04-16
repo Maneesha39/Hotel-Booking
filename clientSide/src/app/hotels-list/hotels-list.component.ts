@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./hotels-list.component.css']
 })
 export class HotelsListComponent implements OnInit {
-  @Output() selected = new EventEmitter();
+
 
   hotels = []
   tableHeaders = ['S.No', 'Name', 'Image', 'price', 'Place', 'Land Mark', 'Pincode', 'Contact No.']
@@ -17,25 +17,22 @@ export class HotelsListComponent implements OnInit {
   constructor(private hotelService: HotelService, private router: Router) { }
 
   async ngOnInit() {
+
+
     const hotels = await this.hotelService.getHotels()
-    console.log(hotels);
-    // debugger;
-
     this.hotels = hotels['hotels'];
-  }
-  navigateToAddHotels() {
+    console.log(hotels)
 
-    this.router.navigate(["hotels/addhotels"]);
-  }
-  navigateToHotelDescription() {
-    this.router.navigate(["hotels/hoteldesc"]);
   }
 
-  onSelect(id) {
+  viewHotel(id) {
+    debugger;
+    this.router.navigateByUrl("hotels/hoteldetails/" + id);
 
-    this.selected.emit(id);
-    //this.router.navigate([`hotels/hoteldetails`])
   }
+
+
+
 
 
 

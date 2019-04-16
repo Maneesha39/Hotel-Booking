@@ -93,18 +93,21 @@
           <label for="typeahead-basic">Select City:</label>
           <!-- <input type="text" formControlName="place" class="form-control" placeholder="Enter place"
             [ngClass]="{ 'is-invalid': submitted && f.place.errors }"> -->
-          <input id="typeahead-basic" type="text" class="form-control" formControlName="place"
-            [ngbTypeahead]="search" />
+          <ng-template #rtCity let-r="result">
+            {{r.city}}
+          </ng-template>
+          <input id="typeahead-basic" [resultTemplate]="rtCity" type="text" class="form-control" formControlName="place"
+            [ngbTypeahead]="search" [inputFormatter]="cityFormat" />
           <pre>Model: {{ place | json }}</pre>
           <div *ngIf="submitted && f.place.errors" class="invalid-feedback">
-            <div *ngIf="f.place.errors.required">Name is required</div>
+            <div *ngIf="f.place.errors.required">Place is required</div>
           </div>
         </div>
 
         <div class="form-group>">
           <label>Check-In</label>
           <input type="date" formControlName="checkin" class="form-control"
-            [ngClass]="{ 'is-insvalid': submitted && f.checkin.errors }" />
+            [ngClass]="{ 'is-invalid': submitted && f.checkin.errors }" />
           <div *ngIf="submitted && f.checkin.errors" class="invalid-feedback">
             <div *ngIf="f.checkin.errors.required">Check-In date is required</div>
           </div>
@@ -113,7 +116,7 @@
         <div class="form-group">
           <label>Check-Out</label>
           <input type="date" formControlName="checkout" class="form-control"
-            [ngClass]="{ 'is-insvalid': submitted && f.checkout.errors }" />
+            [ngClass]="{ 'is-invalid': submitted && f.checkout.errors }" />
           <div *ngIf="submitted && f.checkout.errors" class="invalid-feedback">
             <div *ngIf="f.checkout.errors.required">Check-Out date is required</div>
           </div>
@@ -139,7 +142,8 @@
                     <option value="12">12</option>
                   </select></div>
               </div>
-              <div class="selectBoxWrap" style="margin-left:30px;"><label class="ico13 db padB5">Adult(s)</label>
+              <div class="selectBoxWrap" style="margin-left:30px;">
+                <label class="ico13 db padB5">Adult(s)</label>
                 <div class="customSelect"><select name="Adult">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -178,7 +182,7 @@
       <form [formGroup]="footerForm" (ngSubmit)="onClick()">
         <div class="form-group">
           <input type="text" id="mail" formControlName="mailcheck" class="form-control"
-            placeholder="enter your email id" [ngClass]="{ 'is-insvalid': submittedFooter && g.mailcheck.errors }">
+            placeholder="enter your email id" [ngClass]="{ 'is-invalid': submittedFooter && g.mailcheck.errors }">
           <div *ngIf="submittedFooter && g.mailcheck.errors" class="invalid-feedback">
             <div *ngIf="g.mailcheck.errors.required">Please enter mail id</div>
           </div>

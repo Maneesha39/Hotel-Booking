@@ -16,6 +16,7 @@
           <h5><span><strong>{{item.name}}</strong></span></h5>
           <span><small>{{item.place}}</small></span>,
           <span><small>{{item.landmark}}</small></span>,
+          <span><small>{{item.city}}</small></span>,
           <span><small>{{item.pincode}}</small></span>,
           <span><small>{{item.mobile}}</small></span>
         </div>
@@ -23,7 +24,7 @@
         <div class="col-4" style="text-align:right;padding:20px">
           <br><br>
           <p>{{item.price|currency:'INR'}}</p>
-          <button type="button" class="btn btn-success" (click)="onSelect(item.id)">View Hotel</button>
+          <button type="button" class="btn btn-success" (click)="viewHotel(item.id)">View Hotel</button>
         </div>
       </div>
     </div>

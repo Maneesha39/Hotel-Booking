@@ -17,6 +17,7 @@ const routes: Routes = [
     component: HotelsListComponent
   },
 
+
   {
     path: 'hotels/addhotel',
     component: AddHotelsComponent
@@ -26,9 +27,13 @@ const routes: Routes = [
     component: AddroomComponent
   },
   {
-    path: 'hotels/hoteldetails',
+    path: 'hotels/hoteldetails/:id',
     component: HotelDescriptionComponent
-  }
+  },
+  {
+    path: 'hotels/:city',
+    component: HotelsListComponent
+  },
 ]
 
 

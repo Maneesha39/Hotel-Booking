@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,13 @@ export class HotelService {
     return this.http.get("http://localhost:3000/hotels/").toPromise();
   }
 
-  getHotelByInput(searchText): Observable<any> {
-    return this.http.get("http://localhost:3000/hotelBySearchText/" + searchText);
+  getHotelByInput(searchText) {
+    return this.http.get("http://localhost:3000/hotels/hotelBySearchText/" + searchText).pipe(
+      map((res: any) => {
+
+        return res.hotels;
+      })
+    );
   }
 
   insert(hotel: any) {
@@ -23,6 +29,15 @@ export class HotelService {
 
   insertRoom(room: any) {
     return this.http.post("http://localhost:3000/hotels/addroom", room).toPromise();
+  }
+  insertBooking(room: any) {
+    return this.http.post("http://localhost:3000/hotels/bookroom", room).toPromise();
+  }
+
+  getHotelsByID(id) {
+    console.log(id);
+    return this.http.get(`http://localhost:3000/hotels/hoteldetails/${id}`).toPromise();
+
   }
 }
 
