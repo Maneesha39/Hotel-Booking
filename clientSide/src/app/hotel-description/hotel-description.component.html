@@ -1,0 +1,167 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div *ngFor="let item of singlehotel">
+                    <div class="card" style="width:700px;height:630px">
+                        <div class="card-header" style="height:100px;background-color: #80DEEA">
+                            <h3 style="text-align:left">{{item.name}}</h3>
+                            <span><small>{{item.place}}</small></span>,
+                            <span><small>{{item.landmark}}</small></span>,
+                            <span><small>{{item.city}}</small></span>,
+                            <span><small>{{item.pincode}}</small></span>,
+                            <span><small>{{item.mobile}}</small></span>
+                            <h5 style="text-align: right">
+                                Price: {{item.price|currency:'INR'}}
+                            </h5>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <img [src]="item.image" style="width:100%;height:450px">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-footer" style="height:100px;background-color: #80DEEA">
+                            <strong>
+                                <p>Overview:</p>
+                            </strong>
+                            <p>{{item.name}} is one of the famous and best hotels in {{item.city}}. Customers who are
+                                looking to book
+                                a hotel at {{item.place}}, this hotel is the best option.</p>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="card" style="width:400px; margin-left:230px">
+                    <div style="margin-left: 30px;margin-top: 30px;margin-right: 30px">
+                        <form [formGroup]="bookHotelForm" (ngSubmit)="onSubmit()">
+
+
+
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" formControlName="name" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.name.errors.required">Name is mandatory</div>
+                                    <div *ngIf="f.name.errors.minlength"> Name should be minimum of 3 characters</div>
+                                    <div *ngIf="f.name.errors.maxlength"> Name should be maximum of 30 characters</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Check-In</label>
+                                <input type="date" formControlName="checkin" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.checkin.errors }" />
+                                <div *ngIf="submitted && f.checkin.errors" class="invalid-feedback">
+                                    <div *ngIf="f.checkin.errors.required">Checkin date is mandatory</div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Check-Out</label>
+                                <input type="date" formControlName="checkout" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.checkout.errors }" />
+                                <div *ngIf="submitted && f.checkout.errors" class="invalid-feedback">
+                                    <div *ngIf="f.checkout.errors.required">Checkout date is mandatory</div>
+
+                                </div>
+                            </div>
+                            <span style="display:flex;padding: 10px;">
+                                <div class="form-group">
+
+
+                                    <label class="ico13 db padB5">Room(s)</label>
+
+                                    <select name="Room" class=" form-control" formControlName="rooms">
+                                        <option value="">Select</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+
+
+                                </div>
+                                <div class="form-group">
+
+                                    <label class="ico13 db padB5">Adult(s)</label>
+
+                                    <select name="Adult" class="form-control" formControlName="adults">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="ico13 db padB5">Children</label>
+
+                                    <select class=" form-control" formControlName="children">
+                                        <option label="Select Children"></option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+
+
+
+                            </span>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" formControlName="email" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Please enter mail id</div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Number</label>
+                                <input type="text" formControlName="mobile" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
+                                <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                                    <div *ngIf="f.mobile.errors.required">Contact Number is mandatory</div>
+                                    <div *ngIf="f.mobile.errors.minlength"> Contact Number must contain only 10 digits
+                                    </div>
+                                    <div *ngIf="f.mobile.errors.maxlength"> Contact Number must not exceed 10 digits
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-md">Book Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-hotels-list></app-hotels-list>

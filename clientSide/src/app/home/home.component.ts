@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, tap, switchMap, catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as $ from "jquery";
 import { now } from 'jquery';
 import { style } from '@angular/animations';
@@ -31,11 +31,13 @@ export class HomeComponent implements OnInit {
 
   mainForm: FormGroup;
   footerForm: FormGroup;
-  submitted: Boolean = false;
-  submittedFooter: Boolean = false;
+  submitted = false;
+  submittedFooter = false;
+  cityFormat = (c: { city }) => c.city;
   // now = new Date(this.nowTemp.getFullYear(), this.nowTemp.getMonth(), this.nowTemp.getDate(), 0, 0, 0, 0);
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private hotelService: HotelService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private hotelService: HotelService) { }
+
 
   search = (text$: Observable<string>) =>
 
@@ -79,16 +81,26 @@ export class HomeComponent implements OnInit {
     this.footerForm = this.formBuilder.group({
 
       mailcheck: ['', [Validators.required]]
+
+
     });
+    let city = this.activatedRoute.snapshot.params["city"];
+    console.log(city);
+
   }
+
+
 
   get f() { return this.mainForm.controls; }
 
   onSubmit() {
     this.submitted = true;
-    if (this.mainForm.invalid) {
-      alert("Enter details");
-    }
+    if (this.mainForm.invalid) return
+    this.navigateToHotel()
+  }
+
+  navigateToHotel() {
+    this.router.navigate(['hotels']);
   }
 
 
@@ -128,13 +140,18 @@ export class HomeComponent implements OnInit {
     }
     else {
       this.done()
+
+
     }
   }
 
   done() {
     document.getElementById("getmail").style.display = "none";
     document.getElementById("success").style.display = "block";
+
   }
+
+
 }
 
 

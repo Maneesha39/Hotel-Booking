@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HotelService } from '../hotel.service';
 import { Router } from '@angular/router';
 
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HotelsListComponent implements OnInit {
 
+
   hotels = []
   tableHeaders = ['S.No', 'Name', 'Image', 'price', 'Place', 'Land Mark', 'Pincode', 'Contact No.']
   image = ""
@@ -16,17 +17,23 @@ export class HotelsListComponent implements OnInit {
   constructor(private hotelService: HotelService, private router: Router) { }
 
   async ngOnInit() {
+
+
     const hotels = await this.hotelService.getHotels()
-    console.log(hotels);
-    // debugger;
-
     this.hotels = hotels['hotels'];
-  }
-  navigateToAddHotels() {
+    console.log(hotels)
 
-    this.router.navigate(["hotels/addhotels"]);
   }
-  navigateToHotelDescription() {
-    this.router.navigate(["hotels/hoteldesc"]);
+
+  viewHotel(id) {
+    debugger;
+    this.router.navigateByUrl("hotels/hoteldetails/" + id);
+
   }
+
+
+
+
+
+
 }
