@@ -39,5 +39,18 @@ export class HotelService {
     return this.http.get(`http://localhost:3000/hotels/hoteldetails/${id}`).toPromise();
 
   }
+
+  getHotelsByPlace(place: any) {
+    return this.http.get('http://localhost:3000/hotels',
+      {
+        params:
+          { city: `${place}` }
+        // observe: 'response'
+      }).toPromise()
+    // .then(response => {
+    //   console.log(response);
+    // })
+    // .catch(console.log);
+  }
 }
 

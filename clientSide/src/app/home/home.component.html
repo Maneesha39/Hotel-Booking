@@ -98,7 +98,7 @@
           </ng-template>
           <input id="typeahead-basic" [resultTemplate]="rtCity" type="text" class="form-control" formControlName="place"
             [ngbTypeahead]="search" [inputFormatter]="cityFormat" />
-          <pre>Model: {{ place | json }}</pre>
+          <!-- <pre>Model: {{ place | json }}</pre> -->
           <div *ngIf="submitted && f.place.errors" class="invalid-feedback">
             <div *ngIf="f.place.errors.required">Place is required</div>
           </div>
@@ -171,6 +171,35 @@
     </div>
   </div>
 </div>
+
+<div style="margin-top:50px;margin-left:150px;margin-right:100px;">
+  <div *ngFor="let item of hotels">
+    <div class="card shadow p-0 mb-1 bg-white rounded" align="center" style="width:1000px">
+      <div class=" row card-body">
+
+        <div class="col-4" style="padding:5px;width:250px;height:200px;">
+          <img [src]="item.image" style="width:250px;height:200px">
+        </div>
+        <div class="col-4" style="padding:10px;">
+          <h5><span><strong>{{item.name}}</strong></span></h5>
+          <span><small>{{item.place}}</small></span>,
+          <span><small>{{item.landmark}}</small></span>,
+          <span><small>{{item.city}}</small></span>,
+          <span><small>{{item.pincode}}</small></span>,
+          <span><small>{{item.mobile}}</small></span>
+        </div>
+        <!-- <div class="col-3"></div> -->
+        <div class="col-4" style="text-align:right;padding:20px">
+          <br><br>
+          <p>{{item.price|currency:'INR'}}</p>
+          <button type="button" class="btn btn-success" (click)="viewHotel(item.id)">View Hotel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="footer" id="footer1">
   <div class="text">
     <h3>Looking for travel inspiration?

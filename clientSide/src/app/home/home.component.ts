@@ -8,14 +8,16 @@ import { style } from '@angular/animations';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HotelService } from '../hotel.service';
 
-const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
-  'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
-  'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
-  'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana',
-  'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-  'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
-  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
-  'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+
+
+// const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
+//   'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
+//   'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
+//   'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana',
+//   'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+//   'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
+//   'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
+//   'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
 @Component({
   selector: 'app-home',
@@ -28,7 +30,7 @@ export class HomeComponent implements OnInit {
 
 
   //above is bootstrap typeahead code
-
+  hotels = [];
   mainForm: FormGroup;
   footerForm: FormGroup;
   submitted = false;
@@ -84,8 +86,8 @@ export class HomeComponent implements OnInit {
 
 
     });
-    let city = this.activatedRoute.snapshot.params["city"];
-    console.log(city);
+    // let city = this.activatedRoute.snapshot.params["city"];
+    // console.log(city);
 
   }
 
@@ -93,14 +95,24 @@ export class HomeComponent implements OnInit {
 
   get f() { return this.mainForm.controls; }
 
-  onSubmit() {
-    this.submitted = true;
-    if (this.mainForm.invalid) return
-    this.navigateToHotel()
+  async onSubmit() {
+    try {
+      this.submitted = true;
+      if (this.mainForm.invalid) return
+      const hotels = await this.hotelService.getHotelsByPlace(this.mainForm.value.place)
+      this.hotels = hotels['hotels']
+      console.log(hotels);
+      alert("Hotels Found")
+
+
+    } catch (err) {
+      console.log(err);
+      alert(err)
+    }
   }
 
   navigateToHotel() {
-    this.router.navigate(['hotels']);
+    this.router.navigateByUrl("hotels/" + this.mainForm.value.place);
   }
 
 

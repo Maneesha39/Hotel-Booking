@@ -12,10 +12,10 @@ const routes: Routes = [
   },
 
 
-  {
-    path: 'hotels',
-    component: HotelsListComponent
-  },
+  // {
+  //   path: 'hotels',
+  //   component: HotelsListComponent
+  // },
 
 
   {
