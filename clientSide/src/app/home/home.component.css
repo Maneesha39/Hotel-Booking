@@ -9,18 +9,13 @@
     /* background: url('C:\Users\Administrator\Desktop\Hotel-Booking-Angular\clientSide\src\assets\bg6.jpg'); */
     display:flex;
  
-    /* justify-content: center;
-    align-items: center; */
   }
   .define{
     opacity: 1;
     filter: alpha(opacity=50);
     width:100%;
   }
-  /* .define:hover{
-    opacity: 0.8;
-    filter:alpha(opacity=50);
-  } */
+
 #maincard{
     height:550px;
      width:350px;
@@ -81,6 +76,61 @@ label{
   
   #success{
     display:none;
+  }
+
+  @media screen and (max-width: 600px) {
+    .text { 
+      float: left;
+      width:75%;
+      margin-left:50px;
+    }
+    .footer{
+      height:380px;
+    }
+   .getmaill{
+     float:left;
+     width:75%;
+     margin-left: 20px;
+     margin-top:100px;
+   }  
+   #mail{
+    width:100%;
+    margin-left:-750px;
+    margin-top:120px;
+  }
+  .btn-warning{
+    float: left;
+    width:60%;
+    margin-top:20px;
+    margin-left:-700px;
+  } 
+  }
+  @media screen and (min-width: 600px) and (max-width: 1000px) {
+    .text { 
+      float: left;
+      width:75%;
+      margin-left:100px;
+    }
+    .footer{
+      height:270px;
+    }
+    #mail{
+      width:350%;
+      margin-left:-700px;
+      margin-top:220px;
+    }
+    #success{
+      width:100%;
+      margin-left:300px;
+      margin-top:50px;
+    }
+    .btn-warning{
+      float: left;
+      width:100%;
+      margin-top:-55px;
+      margin-left:-200px;
+    }
+    
   }
  
 

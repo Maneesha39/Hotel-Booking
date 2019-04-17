@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
 
   public model: any;
 
-
   //above is bootstrap typeahead code
 
   mainForm: FormGroup;
