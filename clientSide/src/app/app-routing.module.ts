@@ -4,7 +4,8 @@ import { HotelsListComponent } from './hotels-list/hotels-list.component';
 import { AddHotelsComponent } from './add-hotels/add-hotels.component';
 import { HomeComponent } from './home/home.component';
 import { AddroomComponent } from './addroom/addroom.component';
-import { HotelDescriptionComponent } from './hotel-description/hotel-description.component'
+import { HotelDescriptionComponent } from './hotel-description/hotel-description.component';
+import { BookhotelComponent } from './bookhotel/bookhotel.component';
 const routes: Routes = [
   {
     path: '',
@@ -12,11 +13,15 @@ const routes: Routes = [
   },
 
 
-  // {
-  //   path: 'hotels',
-  //   component: HotelsListComponent
-  // },
 
+  {
+    path: 'hotels',
+    component: HotelsListComponent
+  },
+  {
+    path: 'hotels/:city',
+    component: HotelsListComponent
+  },
 
   {
     path: 'hotels/addhotel',
@@ -30,9 +35,10 @@ const routes: Routes = [
     path: 'hotels/hoteldetails/:id',
     component: HotelDescriptionComponent
   },
+
   {
-    path: 'hotels/:city',
-    component: HotelsListComponent
+    path: 'hotels/city/book',
+    component: BookhotelComponent
   },
 ]
 

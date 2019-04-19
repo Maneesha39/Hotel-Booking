@@ -12,8 +12,8 @@ import { initDomAdapter } from '@angular/platform-browser/src/browser';
 })
 export class HotelDescriptionComponent implements OnInit {
 
-  bookHotelForm: FormGroup;
-  submitted: Boolean = false;
+  // bookHotelForm: FormGroup;
+  // submitted: Boolean = false;
   singlehotel = [];
 
   constructor(private formBuilder: FormBuilder, private hotelService: HotelService, private router: Router, private activatedroute: ActivatedRoute) { }
@@ -21,41 +21,41 @@ export class HotelDescriptionComponent implements OnInit {
   ngOnInit() {
     this.init();
 
-    this.bookHotelForm = this.formBuilder.group({
+    // this.bookHotelForm = this.formBuilder.group({
 
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      checkin: ['', [Validators.required]],
+    //   name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+    //   checkin: ['', [Validators.required]],
 
-      checkout: ['', [Validators.required]],
-      rooms: [''],
-      adults: [''],
-      children: [''],
-      email: ['', [Validators.required]],
+    //   checkout: ['', [Validators.required]],
+    //   rooms: [''],
+    //   adults: [''],
+    //   children: [''],
+    //   email: ['', [Validators.required]],
 
-      mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+    //   mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
 
-    });
+    // });
 
 
   }
-  get f() { return this.bookHotelForm.controls; }
+  // get f() { return this.bookHotelForm.controls; }
 
-  async onSubmit() {
-    try {
-      this.submitted = true;
-      debugger;
-      if (this.bookHotelForm.invalid) return
-      await this.hotelService.insertBooking(this.bookHotelForm.value)
-      alert("Hotel booked Successfully")
-      this.navigateTohotelsList()
-    } catch (err) {
-      console.log(err);
-      alert(err)
-    }
-  }
+  // async onSubmit() {
+  //   try {
+  //     this.submitted = true;
+  //     debugger;
+  //     if (this.bookHotelForm.invalid) return
+  //     await this.hotelService.insertBooking(this.bookHotelForm.value)
+  //     alert("Hotel booked Successfully")
+  //     this.navigateTohotelsList()
+  //   } catch (err) {
+  //     console.log(err);
+  //     alert(err)
+  //   }
+  // }
 
   navigateTohotelsList() {
-    this.router.navigate(['']);
+    this.router.navigate(['hotels/city/book']);
   }
   async init() {
     let h = this.activatedroute.snapshot.params["id"];

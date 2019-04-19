@@ -14,14 +14,20 @@
         </div>
         <div class="col-4" style="padding:10px;">
           <h5><span><strong>{{item.name}}</strong></span></h5>
-          <span><small>{{item.place}}</small></span>,
+          <span><small><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;{{item.place}}</small></span>,
           <span><small>{{item.landmark}}</small></span>,
           <span><small>{{item.city}}</small></span>,
           <span><small>{{item.pincode}}</small></span>,
-          <span><small>{{item.mobile}}</small></span>
+          <span><small>{{item.mobile}}</small></span><br><br><br>
+          <i class="fas fa-coffee"></i><small>Free Breakfast</small>&nbsp;&nbsp;
+          <i class="fas fa-hamburger"></i><small>Free Lunch</small>&nbsp;&nbsp;
+          <i class="fas fa-wifi"></i><small>Free Wifi</small>&nbsp;&nbsp;
+
         </div>
         <!-- <div class="col-3"></div> -->
         <div class="col-4" style="text-align:right;padding:20px">
+          Rating:<i class="far fa-star" style="color:orange"></i><i class="far fa-star" style="color:orange"></i><i
+            class="far fa-star" style="color:orange"></i>
           <br><br>
           <p>{{item.price|currency:'INR'}}</p>
           <button type="button" class="btn btn-success" (click)="viewHotel(item.id)">View Hotel</button>
