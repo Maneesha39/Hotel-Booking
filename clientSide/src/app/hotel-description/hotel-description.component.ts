@@ -12,51 +12,17 @@ import { initDomAdapter } from '@angular/platform-browser/src/browser';
 })
 export class HotelDescriptionComponent implements OnInit {
 
-  // bookHotelForm: FormGroup;
-  // submitted: Boolean = false;
+
   singlehotel = [];
 
   constructor(private formBuilder: FormBuilder, private hotelService: HotelService, private router: Router, private activatedroute: ActivatedRoute) { }
 
   ngOnInit() {
     this.init();
-
-    // this.bookHotelForm = this.formBuilder.group({
-
-    //   name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-    //   checkin: ['', [Validators.required]],
-
-    //   checkout: ['', [Validators.required]],
-    //   rooms: [''],
-    //   adults: [''],
-    //   children: [''],
-    //   email: ['', [Validators.required]],
-
-    //   mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-
-    // });
-
-
   }
-  // get f() { return this.bookHotelForm.controls; }
 
-  // async onSubmit() {
-  //   try {
-  //     this.submitted = true;
-  //     debugger;
-  //     if (this.bookHotelForm.invalid) return
-  //     await this.hotelService.insertBooking(this.bookHotelForm.value)
-  //     alert("Hotel booked Successfully")
-  //     this.navigateTohotelsList()
-  //   } catch (err) {
-  //     console.log(err);
-  //     alert(err)
-  //   }
-  // }
 
-  navigateTohotelsList() {
-    this.router.navigate(['hotels/city/book']);
-  }
+
   async init() {
     let h = this.activatedroute.snapshot.params["id"];
     console.log(h)
@@ -65,8 +31,10 @@ export class HotelDescriptionComponent implements OnInit {
     this.singlehotel = hotels['hotels'];
     console.log(hotels);
 
+  }
 
-
+  BookNow(id) {
+    this.router.navigateByUrl("hotels/book/" + id);
 
   }
 

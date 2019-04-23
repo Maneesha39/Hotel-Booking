@@ -12,12 +12,6 @@ const routes: Routes = [
     component: HomeComponent
   },
 
-
-
-  {
-    path: 'hotels',
-    component: HotelsListComponent
-  },
   {
     path: 'hotels/:city',
     component: HotelsListComponent
@@ -37,7 +31,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'hotels/city/book',
+    path: 'hotels/book/:id',
     component: BookhotelComponent
   },
 ]

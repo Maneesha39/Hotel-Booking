@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HotelService } from '../hotel.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-hotels-list',
@@ -13,13 +13,16 @@ export class HotelsListComponent implements OnInit {
   hotels = []
   tableHeaders = ['S.No', 'Name', 'Image', 'price', 'Place', 'Land Mark', 'Pincode', 'Contact No.']
   image = ""
+  city = ''
 
-  constructor(private hotelService: HotelService, private router: Router) { }
+  constructor(private hotelService: HotelService, private router: Router, private route: ActivatedRoute) {
+    this.route.params.subscribe((params) => {
+      this.city = params['city']
+    })
+  }
 
   async ngOnInit() {
-
-
-    const hotels = await this.hotelService.getHotels()
+    const hotels = await this.hotelService.getHotelsByPlace(this.city)
     this.hotels = hotels['hotels'];
     console.log(hotels)
 

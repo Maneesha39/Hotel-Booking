@@ -34,7 +34,7 @@
               <span style="display:flex;padding: 10px;">
                 <div class="form-group">
                   <label class="ico13 db padB5">Room(s)</label>
-                  <select name="Room" class=" form-control" formControlName="rooms">
+                  <select name="Room" class=" form-control" formControlName="rooms" style="width:110px">
                     <option value="">Select</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -52,7 +52,8 @@
                 </div>
                 <div class="form-group">
                   <label class="ico13 db padB5">Adult(s)</label>
-                  <select name="Adult" class="form-control" formControlName="adults">
+                  <select name="Adult" class="form-control" formControlName="adults" style="width:100px">
+                    <option value="">Select</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -62,10 +63,10 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label class="ico13 db padB5">Children</label>
+                  <label class="ico13 db padB5"> Children</label>
 
-                  <select class=" form-control" formControlName="children">
-                    <option label="Select Children"></option>
+                  <select class=" form-control" formControlName="children" style="width:100px">
+                    <option label="Select"></option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -99,8 +100,65 @@
           </div>
         </div>
       </div>
+      <div class="col-md-4" style="margin-left:200px">
+        <div *ngFor="let item of displayHotel">
+          <div class="card" style="width:400px">
+            <div class="card-header" style="display:flex">
+              <h5>Payable Amount: </h5>
+              <h5 style="margin-left:80px">{{item.price | currency:'INR'}}</h5>
 
-      <div class="col-md-7" style="width:50%">
+            </div>
+            <div class="card-body col-12" style="display: flex">
+              <div class="row">
+                <div class="col-6">
+                  <h6>{{item.name}}</h6>
+                  <span><small class="text-muted">{{item.place}}</small></span>,
+                  <span><small class="text-muted">{{item.landmark}}</small></span>,
+                  <span><small class="text-muted">{{item.city}}</small></span>,
+                  <span><small class="text-muted">{{item.pincode}}</small></span>,
+                  <span><small class="text-muted">{{item.mobile}}</small></span><br><br>
+
+                  <small class="text-muted">Aminities:</small><br>
+                  <i class="fas fa-check" style="color:green"></i>&nbsp;&nbsp;<small class="text-muted">Free
+                    Wifi</small><br>
+                  <small class="text-muted">Inclusions</small><br>
+                  <i class="fas fa-check" style="color:green"></i>&nbsp;&nbsp;
+                  <small class="text-muted">Free Breakfast</small><br>
+                  <i class="fas fa-check" style="color:green"></i>&nbsp;&nbsp;<small class="text-muted">Free
+                    Lunch</small><br><br>
+                </div>
+
+                <div class="col-6">
+                  <img [src]="item.image" style="width:150px;height:150px">
+                </div><br>
+
+                <div style="display: flex">
+                  <div style="width:150px; height:100px"><small class="text-muted">CHECK-IN</small></div>
+                  <div style="width:150px"><small class="text-muted">CHECK-OUT</small></div>
+                  <div style="width:150px" style="margin-right:5px"><small class="text-muted">GUEST</small></div>
+
+                </div>
+                <div class=" col-12 row">
+                  <div style="display:flex">
+                    <div style="width:250px">
+                      <p style="margin-left:30px">Booking Price:</p>
+                      <p style="margin-left:30px">Discount(10%):</p>
+                    </div>
+                    <div>
+                      <p>{{item.price | currency:'INR'}}</p>
+                      <p>{{item.price*0.1,2}}</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4" style="width:50%">
         <div class="alert alert-success" role="alert" *ngIf="showSuccessMessage">
           <h4 class="alert-heading">Thank You!</h4>
           <p>Your booking has been successfull and booking confirmation has been sent to your email </p>

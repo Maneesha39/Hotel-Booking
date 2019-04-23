@@ -8,28 +8,31 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./bookhotel.component.css']
 })
 export class BookhotelComponent implements OnInit {
+  displayHotel = [];
   showSuccessMessage: Boolean = false;
   showForm: Boolean = true;
-
+  id = "";
 
   bookHotelForm: FormGroup;
   submitted: Boolean = false;
-  constructor(private formBuilder: FormBuilder, private hotelService: HotelService, private router: Router, private activatedroute: ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder, private hotelService: HotelService, private router: Router, private activatedroute: ActivatedRoute) {
 
-  ngOnInit() {
+    this.activatedroute.params.subscribe((params) => {
+      this.id = params['id']
+      console.log(this.id);
+    })
+  }
+  async ngOnInit() {
+    this.init()
     this.bookHotelForm = this.formBuilder.group({
-
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       checkin: ['', [Validators.required]],
-
       checkout: ['', [Validators.required]],
       rooms: [''],
       adults: [''],
       children: [''],
       email: ['', [Validators.required]],
-
       mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-
     });
 
   }
@@ -42,19 +45,20 @@ export class BookhotelComponent implements OnInit {
       debugger;
       if (this.bookHotelForm.invalid) return
       await this.hotelService.insertBooking(this.bookHotelForm.value)
-      // alert("Hotel booked Successfully")
       this.showForm = false;
       this.showSuccessMessage = true;
-      // this.navigateTohotelsList()
-
     } catch (err) {
       console.log(err);
       alert(err)
     }
   }
 
-  // navigateTohotelsList() {
-  //   this.router.navigate(['']);
-  // }
+  async init() {
+    const hotel = await this.hotelService.getHotelsByID(this.id);
+    this.displayHotel = hotel['hotels']
+  }
+
+
 
 }
+

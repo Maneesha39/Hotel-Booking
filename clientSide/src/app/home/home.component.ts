@@ -99,11 +99,11 @@ export class HomeComponent implements OnInit {
     try {
       this.submitted = true;
       if (this.mainForm.invalid) return
-      const hotels = await this.hotelService.getHotelsByPlace(this.mainForm.value.place)
-      this.hotels = hotels['hotels']
-      console.log(hotels);
-      alert("Hotels Found")
-
+      // const hotels = await this.hotelService.getHotelsByPlace(this.mainForm.value.place)
+      // this.hotels = hotels['hotels']
+      // console.log(hotels);
+      // alert("Hotels Found")
+      this.navigateToHotel()
 
     } catch (err) {
       console.log(err);
