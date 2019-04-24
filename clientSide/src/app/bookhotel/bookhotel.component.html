@@ -65,7 +65,7 @@
                 <div class="form-group">
                   <label class="ico13 db padB5"> Children</label>
 
-                  <select class=" form-control" formControlName="children" style="width:100px">
+                  <select class="form-control" formControlName="children" style="width:100px">
                     <option label="Select"></option>
                     <option value="0">0</option>
                     <option value="1">1</option>
@@ -133,22 +133,39 @@
                 </div><br>
 
                 <div style="display: flex">
-                  <div style="width:150px; height:100px"><small class="text-muted">CHECK-IN</small></div>
-                  <div style="width:150px"><small class="text-muted">CHECK-OUT</small></div>
-                  <div style="width:150px" style="margin-right:5px"><small class="text-muted">GUEST</small></div>
+                  <div style="width:150px; height:100px"><small class="text-muted">CHECK-IN</small><br>
+                    {{duration.checkin |date:'dd/MM/yyyy' }}
+                  </div>
+                  <div style="width:150px"><small class="text-muted">CHECK-OUT</small><br>
+                    {{duration.checkout|date:'dd/MM/yyyy'}}
+                  </div>
+                  <div style="width:150px" style="margin-right:5px"><small class="text-muted">GUESTS</small><br>
+                    &nbsp;&nbsp;&nbsp;{{duration.guests}}
+                  </div>
 
                 </div>
                 <div class=" col-12 row">
                   <div style="display:flex">
                     <div style="width:250px">
-                      <p style="margin-left:30px">Booking Price:</p>
-                      <p style="margin-left:30px">Discount(10%):</p>
+                      <small>Booking Price:</small>
+                      <small style="margin-left:30px">Discount(10%):</small>
+                      <small style="margin-left:30px">Discounted Price:</small>
+                      <small style="margin-left:30px">GST(12%):</small>
+                      <small style="margin-left:30px"><strong>Total Payable:</strong></small>
+
                     </div>
                     <div>
-                      <p>{{item.price | currency:'INR'}}</p>
-                      <p>{{item.price*0.1,2}}</p>
+                      <small>{{item.price | currency:'INR'}}</small>
+                      <small>- {{item.price *0.1| number:'1.2-2'}}</small>
+                      <small> {{(item.price)-(item.price *0.1)| number:'1.2-2'}}</small>
+                      <small> {{(((item.price)-(item.price *0.1))*0.12)| number:'1.2-2'}}</small>
+                      <small>
+                        {{(((item.price)-(item.price *0.1))*0.12)+((item.price)-(item.price *0.1))| number:'1.2-2'}}
+                      </small>
+
                     </div>
                   </div>
+                  <hr>
                 </div>
 
               </div>

@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddroomComponent } from './addroom/addroom.component';
 import { BookhotelComponent } from './bookhotel/bookhotel.component';
+import { BsDatepickerModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { BookhotelComponent } from './bookhotel/bookhotel.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     HotelService,

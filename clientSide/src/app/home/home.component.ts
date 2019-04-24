@@ -1,23 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, tap, switchMap, catchError } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
-import * as $ from "jquery";
-import { now } from 'jquery';
-import { style } from '@angular/animations';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HotelService } from '../hotel.service';
 
 
 
-// const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
-//   'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
-//   'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
-//   'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana',
-//   'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-//   'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
-//   'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
-//   'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+
 
 @Component({
   selector: 'app-home',
@@ -26,50 +14,33 @@ import { HotelService } from '../hotel.service';
 })
 export class HomeComponent implements OnInit {
 
+  minDate: Date;
+  maxDate: Date;
   public model: any;
 
 
   //above is bootstrap typeahead code
-  hotels = [];
+  cities = [];
   mainForm: FormGroup;
   footerForm: FormGroup;
   submitted = false;
   submittedFooter = false;
-  cityFormat = (c: { city }) => c.city;
+
   // now = new Date(this.nowTemp.getFullYear(), this.nowTemp.getMonth(), this.nowTemp.getDate(), 0, 0, 0, 0);
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private hotelService: HotelService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private hotelService: HotelService) {
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.minDate.setDate(this.minDate.getDate());
+    this.maxDate.setDate(this.maxDate.getDate() + 30);
+
+  }
 
 
-  search = (text$: Observable<string>) =>
 
-    text$.pipe(
-
-      debounceTime(300),
-
-      distinctUntilChanged(),
-
-      tap(() => {
-
-      }),
-
-      switchMap(term =>
-
-        this.hotelService.getHotelByInput(term).pipe(
-
-          tap(() => { }),
-
-          catchError(() => {
+  async ngOnInit() {
 
 
-            return of([]);
-
-          }))
-
-      ), tap(() => { })
-
-    )
-  ngOnInit() {
 
     this.mainForm = this.formBuilder.group({
       // Validating fields...
@@ -77,32 +48,30 @@ export class HomeComponent implements OnInit {
 
       checkin: ['', [Validators.required]],
 
-      checkout: ['', [Validators.required]]
+      checkout: ['', [Validators.required]],
+      rooms: ['', [Validators.required]],
+      adults: ['', [Validators.required]],
+      children: ['', [Validators.required]]
     });
 
     this.footerForm = this.formBuilder.group({
 
       mailcheck: ['', [Validators.required]]
-
-
     });
-    // let city = this.activatedRoute.snapshot.params["city"];
-    // console.log(city);
+
+    const cities = await this.hotelService.getCites()
+
+    this.cities = cities['cities'];
+
 
   }
-
-
-
   get f() { return this.mainForm.controls; }
 
   async onSubmit() {
     try {
       this.submitted = true;
+      sessionStorage.setItem("duration", JSON.stringify({ "checkin": this.mainForm.value.checkin, "checkout": this.mainForm.value.checkout, "guests": this.mainForm.value.adults }))
       if (this.mainForm.invalid) return
-      // const hotels = await this.hotelService.getHotelsByPlace(this.mainForm.value.place)
-      // this.hotels = hotels['hotels']
-      // console.log(hotels);
-      // alert("Hotels Found")
       this.navigateToHotel()
 
     } catch (err) {

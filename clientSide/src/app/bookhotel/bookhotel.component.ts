@@ -12,6 +12,7 @@ export class BookhotelComponent implements OnInit {
   showSuccessMessage: Boolean = false;
   showForm: Boolean = true;
   id = "";
+  duration: any;
 
   bookHotelForm: FormGroup;
   submitted: Boolean = false;
@@ -21,6 +22,9 @@ export class BookhotelComponent implements OnInit {
       this.id = params['id']
       console.log(this.id);
     })
+
+    this.duration = JSON.parse(sessionStorage.getItem("duration"));
+    console.log(this.duration);
   }
   async ngOnInit() {
     this.init()

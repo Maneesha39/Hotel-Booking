@@ -10,18 +10,16 @@ export class HotelService {
 
   constructor(private http: HttpClient) { }
 
-  getHotels() {
-    return this.http.get("http://localhost:3000/hotels/").toPromise();
+  getCites() {
+    return this.http.get("http://localhost:3000/cities/").toPromise();
+
   }
 
-  getHotelByInput(searchText) {
-    return this.http.get("http://localhost:3000/hotels/hotelBySearchText/" + searchText).pipe(
-      map((res: any) => {
+  // getHotels() {
+  //   return this.http.get("http://localhost:3000/hotels/").toPromise();
+  // }
 
-        return res.hotels;
-      })
-    );
-  }
+
 
   insert(hotel: any) {
     return this.http.post("http://localhost:3000/hotels", hotel).toPromise();
