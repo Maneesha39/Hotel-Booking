@@ -12,7 +12,6 @@ export class HotelService {
 
   getCites() {
     return this.http.get("http://localhost:3000/cities/").toPromise();
-
   }
 
   // getHotels() {

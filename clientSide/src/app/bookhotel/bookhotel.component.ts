@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HotelService } from '../hotel.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DISABLED } from '@angular/forms/src/model';
 @Component({
   selector: 'app-bookhotel',
   templateUrl: './bookhotel.component.html',
@@ -13,6 +14,7 @@ export class BookhotelComponent implements OnInit {
   showForm: Boolean = true;
   id = "";
   duration: any;
+  selected_hotel: any;
 
   bookHotelForm: FormGroup;
   submitted: Boolean = false;
@@ -25,18 +27,25 @@ export class BookhotelComponent implements OnInit {
 
     this.duration = JSON.parse(sessionStorage.getItem("duration"));
     console.log(this.duration);
+
+    this.selected_hotel = JSON.parse(sessionStorage.getItem("selected_hotel"));
+    console.log(this.selected_hotel);
   }
+
   async ngOnInit() {
     this.init()
     this.bookHotelForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      checkin: ['', [Validators.required]],
-      checkout: ['', [Validators.required]],
-      rooms: [''],
-      adults: [''],
-      children: [''],
+      checkin: [this.duration.checkin],
+      checkout: [this.duration.checkout],
+      rooms: [this.duration.rooms],
+      adults: [this.duration.adults],
+      children: [this.duration.children],
       email: ['', [Validators.required]],
       mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      price: [this.selected_hotel.price],
+      id: [parseInt(this.selected_hotel.id)]
+
     });
 
   }
@@ -46,9 +55,11 @@ export class BookhotelComponent implements OnInit {
   async onSubmit() {
     try {
       this.submitted = true;
+      console.log(this.bookHotelForm.value);
       debugger;
       if (this.bookHotelForm.invalid) return
       await this.hotelService.insertBooking(this.bookHotelForm.value)
+
       this.showForm = false;
       this.showSuccessMessage = true;
     } catch (err) {
@@ -60,6 +71,8 @@ export class BookhotelComponent implements OnInit {
   async init() {
     const hotel = await this.hotelService.getHotelsByID(this.id);
     this.displayHotel = hotel['hotels']
+
+    console.log(this.displayHotel[0].price)
   }
 
 

@@ -18,11 +18,11 @@ const routes: Routes = [
   },
 
   {
-    path: 'hotels/addhotel',
+    path: 'addhotel',
     component: AddHotelsComponent
   },
   {
-    path: 'hotels/addroom',
+    path: 'addroom',
     component: AddroomComponent
   },
   {

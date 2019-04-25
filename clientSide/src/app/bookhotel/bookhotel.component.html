@@ -17,16 +17,14 @@
               </div>
               <div class="form-group">
                 <label>Check-In</label>
-                <input type="date" formControlName="checkin" class="form-control"
-                  [ngClass]="{ 'is-invalid': submitted && f.checkin.errors }" />
-                <div *ngIf="submitted && f.checkin.errors" class="invalid-feedback">
-                  <div *ngIf="f.checkin.errors.required">Checkin date is mandatory</div>
-                </div>
+                <input type="text" value="{{duration.checkin|date:'dd/MM/yyyy'}}" formControlName="checkin"
+                  class="form-control" />
+
               </div>
               <div class="form-group">
                 <label>Check-Out</label>
-                <input type="date" formControlName="checkout" class="form-control"
-                  [ngClass]="{ 'is-invalid': submitted && f.checkout.errors }" />
+                <input type="text" value="{{duration.checkout|date:'dd/MM/yyyy'}}" formControlName="checkout"
+                  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.checkout.errors }" />
                 <div *ngIf="submitted && f.checkout.errors" class="invalid-feedback">
                   <div *ngIf="f.checkout.errors.required">Checkout date is mandatory</div>
                 </div>
@@ -34,45 +32,23 @@
               <span style="display:flex;padding: 10px;">
                 <div class="form-group">
                   <label class="ico13 db padB5">Room(s)</label>
-                  <select name="Room" class=" form-control" formControlName="rooms" style="width:110px">
-                    <option value="">Select</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                  </select>
+                  <input type="number" value="{{duration.rooms}}" class="form-control" formControlName="rooms"
+                    style="width:80px">
+
                 </div>
                 <div class="form-group">
                   <label class="ico13 db padB5">Adult(s)</label>
-                  <select name="Adult" class="form-control" formControlName="adults" style="width:100px">
-                    <option value="">Select</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                  </select>
+                  <input type="number" style="text-align: center" value="{{duration.adults}}" class="form-control"
+                    formControlName="adults" style="width:80px">
+
+
                 </div>
                 <div class="form-group">
                   <label class="ico13 db padB5"> Children</label>
 
-                  <select class="form-control" formControlName="children" style="width:100px">
-                    <option label="Select"></option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select>
+                  <input type="number" style="text-align: center" value="{{duration.children}}" class="form-control"
+                    formControlName="children" style="width:80px">
+
                 </div>
               </span>
               <div class="form-group">
@@ -92,6 +68,16 @@
                   <div *ngIf="f.mobile.errors.minlength"> Contact Number must contain only 10 digits</div>
                   <div *ngIf="f.mobile.errors.maxlength"> Contact Number must not exceed 10 digits</div>
                 </div>
+              </div>
+              <div class="form-group">
+                <label>Price</label>
+                <input type="text" value="{{selected_hotel.price}}" formControlName="price" class="form-control" />
+
+              </div>
+              <div class="form-group">
+                <label>Hotel Id</label>
+                <input type="text" value="{{selected_hotel.id}}" formControlName="id" class="form-control" />
+
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-md">Book Now</button>
@@ -140,7 +126,7 @@
                     {{duration.checkout|date:'dd/MM/yyyy'}}
                   </div>
                   <div style="width:150px" style="margin-right:5px"><small class="text-muted">GUESTS</small><br>
-                    &nbsp;&nbsp;&nbsp;{{duration.guests}}
+                    &nbsp;&nbsp;&nbsp;{{duration.adults}}
                   </div>
 
                 </div>

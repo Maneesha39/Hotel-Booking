@@ -61,6 +61,8 @@ export class HomeComponent implements OnInit {
 
     const cities = await this.hotelService.getCites()
 
+    console.log(cities);
+
     this.cities = cities['cities'];
 
 
@@ -70,7 +72,7 @@ export class HomeComponent implements OnInit {
   async onSubmit() {
     try {
       this.submitted = true;
-      sessionStorage.setItem("duration", JSON.stringify({ "checkin": this.mainForm.value.checkin, "checkout": this.mainForm.value.checkout, "guests": this.mainForm.value.adults }))
+      sessionStorage.setItem("duration", JSON.stringify({ "checkin": this.mainForm.value.checkin, "checkout": this.mainForm.value.checkout, "adults": this.mainForm.value.adults, "rooms": this.mainForm.value.rooms, "children": this.mainForm.value.children }))
       if (this.mainForm.invalid) return
       this.navigateToHotel()
 

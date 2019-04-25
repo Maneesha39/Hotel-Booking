@@ -50,7 +50,7 @@ export class AddHotelsComponent implements OnInit {
   }
 
   navigateTohotelsList() {
-    this.router.navigate(['hotels']);
+    this.router.navigate(['']);
   }
 }
 
