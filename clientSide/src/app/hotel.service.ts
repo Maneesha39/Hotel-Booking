@@ -27,8 +27,8 @@ export class HotelService {
   insertRoom(room: any) {
     return this.http.post("http://localhost:3000/hotels/addroom", room).toPromise();
   }
-  insertBooking(room: any) {
-    return this.http.post("http://localhost:3000/hotels/bookroom", room).toPromise();
+  insertBooking(room: any, id) {
+    return this.http.post("http://localhost:3000/hotels/bookroom", { room: room, id: id }).toPromise();
   }
 
   getHotelsByID(id) {
@@ -43,6 +43,10 @@ export class HotelService {
     //   console.log(response);
     // })
     // .catch(console.log);
+  }
+
+  getHotelNames() {
+    return this.http.get("http://localhost:3000/hotels/").toPromise();
   }
 }
 

@@ -13,17 +13,25 @@ export class AddroomComponent implements OnInit {
   addRoomForm: FormGroup;
 
   submitted: Boolean = false;
-
+  names = [];
 
   constructor(private router: Router, private formBuilder: FormBuilder, private hotelService: HotelService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.addRoomForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
 
       rooms: ['', [Validators.required, Validators.min(1)]]
 
+
+
     });
+
+    const names = await this.hotelService.getHotelNames()
+
+    console.log(names);
+
+    this.names = names['names'];
 
 
 
@@ -46,7 +54,7 @@ export class AddroomComponent implements OnInit {
   }
 
   navigateToAddRoom() {
-    this.router.navigate(['hotels']);
+    this.router.navigate(['']);
   }
 }
 

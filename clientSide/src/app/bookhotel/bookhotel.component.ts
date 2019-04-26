@@ -12,9 +12,14 @@ export class BookhotelComponent implements OnInit {
   displayHotel = [];
   showSuccessMessage: Boolean = false;
   showForm: Boolean = true;
-  id = "";
+  id: number;
   duration: any;
   selected_hotel: any;
+  price: number;
+  discount: number;
+  discountedPrice: number;
+  gst: number;
+  netPayable: number;
 
   bookHotelForm: FormGroup;
   submitted: Boolean = false;
@@ -30,6 +35,7 @@ export class BookhotelComponent implements OnInit {
 
     this.selected_hotel = JSON.parse(sessionStorage.getItem("selected_hotel"));
     console.log(this.selected_hotel);
+
   }
 
   async ngOnInit() {
@@ -44,7 +50,7 @@ export class BookhotelComponent implements OnInit {
       email: ['', [Validators.required]],
       mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       price: [this.selected_hotel.price],
-      id: [parseInt(this.selected_hotel.id)]
+
 
     });
 
@@ -56,10 +62,9 @@ export class BookhotelComponent implements OnInit {
     try {
       this.submitted = true;
       console.log(this.bookHotelForm.value);
-      debugger;
-      if (this.bookHotelForm.invalid) return
-      await this.hotelService.insertBooking(this.bookHotelForm.value)
 
+      if (this.bookHotelForm.invalid) return
+      await this.hotelService.insertBooking(this.bookHotelForm.value, this.id)
       this.showForm = false;
       this.showSuccessMessage = true;
     } catch (err) {
@@ -71,9 +76,26 @@ export class BookhotelComponent implements OnInit {
   async init() {
     const hotel = await this.hotelService.getHotelsByID(this.id);
     this.displayHotel = hotel['hotels']
+    this.amountCalculation()
 
-    console.log(this.displayHotel[0].price)
+
   }
+
+  amountCalculation() {
+
+    this.price = this.displayHotel[0].price;
+    this.discount = Math.round(this.price * 0.1);
+    this.discountedPrice = Math.round(this.price - this.discount);
+    this.gst = Math.round(this.discountedPrice * 0.12)
+    this.netPayable = Math.round(this.discountedPrice + this.gst)
+    console.log(this.discount);
+    console.log(this.netPayable);
+
+  }
+
+
+
+
 
 
 

@@ -17,13 +17,13 @@
               </div>
               <div class="form-group">
                 <label>Check-In</label>
-                <input type="text" value="{{duration.checkin|date:'dd/MM/yyyy'}}" formControlName="checkin"
+                <input type="text" disabled value="{{duration.checkin|date:'dd/MM/yyyy'}}" formControlName="checkin"
                   class="form-control" />
 
               </div>
               <div class="form-group">
                 <label>Check-Out</label>
-                <input type="text" value="{{duration.checkout|date:'dd/MM/yyyy'}}" formControlName="checkout"
+                <input type="text" disabled value="{{duration.checkout|date:'dd/MM/yyyy'}}" formControlName="checkout"
                   class="form-control" [ngClass]="{ 'is-invalid': submitted && f.checkout.errors }" />
                 <div *ngIf="submitted && f.checkout.errors" class="invalid-feedback">
                   <div *ngIf="f.checkout.errors.required">Checkout date is mandatory</div>
@@ -32,22 +32,22 @@
               <span style="display:flex;padding: 10px;">
                 <div class="form-group">
                   <label class="ico13 db padB5">Room(s)</label>
-                  <input type="number" value="{{duration.rooms}}" class="form-control" formControlName="rooms"
+                  <input type="number" value="{{duration.rooms}}" disabled class="form-control" formControlName="rooms"
                     style="width:80px">
 
                 </div>
                 <div class="form-group">
                   <label class="ico13 db padB5">Adult(s)</label>
-                  <input type="number" style="text-align: center" value="{{duration.adults}}" class="form-control"
-                    formControlName="adults" style="width:80px">
+                  <input type="number" style="text-align: center" disabled value="{{duration.adults}}"
+                    class="form-control" formControlName="adults" style="width:80px">
 
 
                 </div>
                 <div class="form-group">
                   <label class="ico13 db padB5"> Children</label>
 
-                  <input type="number" style="text-align: center" value="{{duration.children}}" class="form-control"
-                    formControlName="children" style="width:80px">
+                  <input type="number" style="text-align: center" disabled value="{{duration.children}}"
+                    class="form-control" formControlName="children" style="width:80px">
 
                 </div>
               </span>
@@ -71,14 +71,10 @@
               </div>
               <div class="form-group">
                 <label>Price</label>
-                <input type="text" value="{{selected_hotel.price}}" formControlName="price" class="form-control" />
+                <input type="number" disabled value="{{netPayable}}" formControlName="price" class="form-control" />
 
               </div>
-              <div class="form-group">
-                <label>Hotel Id</label>
-                <input type="text" value="{{selected_hotel.id}}" formControlName="id" class="form-control" />
 
-              </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-md">Book Now</button>
               </div>
@@ -86,12 +82,13 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4" style="margin-left:200px">
+      <div class="col-md-4" style="margin-left:50px">
         <div *ngFor="let item of displayHotel">
-          <div class="card" style="width:400px">
+          <div class="card" style="width:800px">
             <div class="card-header" style="display:flex">
               <h5>Payable Amount: </h5>
-              <h5 style="margin-left:80px">{{item.price | currency:'INR'}}</h5>
+              <h5 style="margin-left:80px">
+                {{netPayable | currency:'INR'}}</h5>
 
             </div>
             <div class="card-body col-12" style="display: flex">
@@ -102,57 +99,78 @@
                   <span><small class="text-muted">{{item.landmark}}</small></span>,
                   <span><small class="text-muted">{{item.city}}</small></span>,
                   <span><small class="text-muted">{{item.pincode}}</small></span>,
-                  <span><small class="text-muted">{{item.mobile}}</small></span><br><br>
+                  <span><small class="text-muted">{{item.mobile}}</small></span><br>
+                  <hr>
 
                   <small class="text-muted">Aminities:</small><br>
                   <i class="fas fa-check" style="color:green"></i>&nbsp;&nbsp;<small class="text-muted">Free
                     Wifi</small><br>
+
                   <small class="text-muted">Inclusions</small><br>
                   <i class="fas fa-check" style="color:green"></i>&nbsp;&nbsp;
                   <small class="text-muted">Free Breakfast</small><br>
                   <i class="fas fa-check" style="color:green"></i>&nbsp;&nbsp;<small class="text-muted">Free
-                    Lunch</small><br><br>
-                </div>
+                    Lunch</small>
+                  <hr>
 
-                <div class="col-6">
-                  <img [src]="item.image" style="width:150px;height:150px">
-                </div><br>
-
-                <div style="display: flex">
-                  <div style="width:150px; height:100px"><small class="text-muted">CHECK-IN</small><br>
-                    {{duration.checkin |date:'dd/MM/yyyy' }}
-                  </div>
-                  <div style="width:150px"><small class="text-muted">CHECK-OUT</small><br>
-                    {{duration.checkout|date:'dd/MM/yyyy'}}
-                  </div>
-                  <div style="width:150px" style="margin-right:5px"><small class="text-muted">GUESTS</small><br>
-                    &nbsp;&nbsp;&nbsp;{{duration.adults}}
-                  </div>
-
-                </div>
-                <div class=" col-12 row">
-                  <div style="display:flex">
-                    <div style="width:250px">
-                      <small>Booking Price:</small>
-                      <small style="margin-left:30px">Discount(10%):</small>
-                      <small style="margin-left:30px">Discounted Price:</small>
-                      <small style="margin-left:30px">GST(12%):</small>
-                      <small style="margin-left:30px"><strong>Total Payable:</strong></small>
-
+                  <div style="display: flex">
+                    <div style="width:100px; height:40px;"><small class="text-muted">CHECK-IN</small><br>
+                      <small>{{duration.checkin |date:'dd/MM/yyyy' }}</small>
                     </div>
-                    <div>
-                      <small>{{item.price | currency:'INR'}}</small>
-                      <small>- {{item.price *0.1| number:'1.2-2'}}</small>
-                      <small> {{(item.price)-(item.price *0.1)| number:'1.2-2'}}</small>
-                      <small> {{(((item.price)-(item.price *0.1))*0.12)| number:'1.2-2'}}</small>
-                      <small>
-                        {{(((item.price)-(item.price *0.1))*0.12)+((item.price)-(item.price *0.1))| number:'1.2-2'}}
-                      </small>
-
+                    <div style="width:100px;margin-left:5px"><small class="text-muted">CHECK-OUT</small><br>
+                      <small>{{duration.checkout|date:'dd/MM/yyyy'}}</small>
                     </div>
                   </div>
                   <hr>
+                  <div style="display:flex">
+                    <div style="width:60px;"><small class="text-muted">ROOMS</small><br>
+                      <small>&nbsp;&nbsp;&nbsp;{{duration.rooms}}</small>
+                    </div>
+                    <div style="width:100px" style="margin-left:5px"><small class="text-muted">ADULTS</small><br>
+                      <small>&nbsp;&nbsp;&nbsp;{{duration.adults}}</small>
+                    </div>
+                    <div style="width:150px" style="margin-left:20px"><small class="text-muted">CHILDREN</small><br>
+                      <small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{duration.children}}</small>
+                    </div>
+                  </div>
+                  <hr>
+
+                  <div class=" col-12 row">
+                    <div style="display:flex" style="width:100%">
+                      <div>
+
+                        <div>
+                          <span><small>Booking
+                              Price:<span style="margin-left:100px">{{price | currency:'INR'}}</span></small></span><br>
+                          <span><small>Discount(10%):
+                              <span
+                                style="margin-left:90px">-&nbsp;&nbsp;&nbsp;{{discount | currency:'INR'}}</span></small></span><br>
+                          <hr>
+                          <span><small>Discounted
+                              Price:<span
+                                style="margin-left:80px">{{discountedPrice | currency:'INR'}}</span></small></span><br>
+                          <span><small>GST(12%):<span
+                                style="margin-left:115px">-&nbsp;&nbsp;&nbsp;{{gst | currency:'INR'}}</span></small></span>
+                          <hr>
+                          <span><small><strong>Total
+                                Payable:<span
+                                  style="margin-left:90px">&nbsp;&nbsp;&nbsp;{{netPayable | currency:'INR'}}</span></strong></small></span><br>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <hr>
+                  </div>
                 </div>
+
+
+                <div class="col-6">
+                  <img [src]="item.image" style="width:100%;height:100%;float:right; ">
+                </div><br>
+
+
+
 
               </div>
             </div>

@@ -5,7 +5,7 @@
         <h3 style="text-align: center">Add Room</h3>
         <form [formGroup]="addRoomForm" (ngSubmit)="onSubmit()">
 
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>Hotel Name</label>
             <input type="text" formControlName="name" class="form-control"
               [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
@@ -14,8 +14,23 @@
               <div *ngIf="f.name.errors.minlength"> Name should be minimum of 3 characters</div>
               <div *ngIf="f.name.errors.maxlength"> Name should be maximum of 100 characters</div>
             </div>
-          </div>
+          </div> -->
+          <div class="selectBoxWrap">
+            <label class="ico13 db padB5">Select Hotel</label>
+            <div class="customSelect">
+              <div class="form-group">
+                <select name="name" class="form-control" formControlName="name"
+                  [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Please select City</div>
+                  </div>
 
+                  <option *ngFor="let name of names" [value]="name.name">{{name.name}}</option>
+
+                </select>
+              </div>
+            </div>
+          </div>
 
           <div class="form-group">
             <label>Number of Rooms</label>
