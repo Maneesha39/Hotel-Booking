@@ -18,6 +18,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddroomComponent } from './addroom/addroom.component';
 import { BookhotelComponent } from './bookhotel/bookhotel.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { LoginComponent } from './login/login.component';
+import { LoginalertComponent } from './loginalert/loginalert.component';
+import { AuthService } from './auth.service';
+import { AdduserComponent } from './adduser/adduser.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +32,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     HotelDescriptionComponent,
     AddHotelsComponent,
     AddroomComponent,
-    BookhotelComponent
+    BookhotelComponent,
+    LoginComponent,
+    LoginalertComponent,
+    AdduserComponent
 
 
   ],
@@ -45,7 +53,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
   providers: [
     HotelService,
 
-    MatButtonModule
+    MatButtonModule,
+    AuthService
 
   ],
   bootstrap: [AppComponent]

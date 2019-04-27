@@ -2,11 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HotelService } from '../hotel.service';
-
-
-
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,16 +12,9 @@ export class HomeComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
   public model: any;
-
-
-  //above is bootstrap typeahead code
   cities = [];
   mainForm: FormGroup;
-  footerForm: FormGroup;
   submitted = false;
-  submittedFooter = false;
-
-  // now = new Date(this.nowTemp.getFullYear(), this.nowTemp.getMonth(), this.nowTemp.getDate(), 0, 0, 0, 0);
 
   constructor(private router: Router, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private hotelService: HotelService) {
     this.minDate = new Date();
@@ -54,10 +42,7 @@ export class HomeComponent implements OnInit {
       children: ['', [Validators.required]]
     });
 
-    this.footerForm = this.formBuilder.group({
 
-      mailcheck: ['', [Validators.required]]
-    });
 
     const cities = await this.hotelService.getCites()
 
@@ -86,53 +71,17 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl("hotels/" + this.mainForm.value.place);
   }
 
+  addHotel() {
 
-  aboutUs() {
-    // document.getElementById("insidecard").style.display = "none";
-    document.getElementById("maincard").style.display = "none";
-    document.getElementById("footer1").style.display = "block";
-    document.getElementById("about").style.display = "block";
-    document.getElementById("contact").style.display = "none";
-  }
-
-  contactUs() {
-    document.getElementById("maincard").style.display = "none";
-    // document.getElementById("insidecard").style.display = "none";
-    document.getElementById("footer1").style.display = "block";
-    document.getElementById("about").style.display = "none";
-    document.getElementById("contact").style.display = "block";
-  }
-
-  toHome() {
-    document.getElementById("maincard").style.display = "block";
-    document.getElementById("insidecard").style.display = "block";
-    document.getElementById("footer1").style.display = "block";
-    document.getElementById("about").style.display = "none";
-    document.getElementById("contact").style.display = "none";
-    document.getElementById("insidecard").style.marginLeft = "35px";
-    document.getElementById("insidecard").style.marginRight = "35px";
-  }
-
-  get g() { return this.footerForm.controls; }
-
-
-  onClick() {
-    this.submittedFooter = true;
-    if (this.footerForm.invalid) {
-      return
-    }
-    else {
-      this.done()
-
-
-    }
-  }
-
-  done() {
-    document.getElementById("getmail").style.display = "none";
-    document.getElementById("success").style.display = "block";
+    this.router.navigate(['login'])
 
   }
+
+
+
+
+
+
 
 
 }

@@ -12,6 +12,7 @@ export class BookhotelComponent implements OnInit {
   displayHotel = [];
   showSuccessMessage: Boolean = false;
   showForm: Boolean = true;
+  showCart: Boolean = true;
   id: number;
   duration: any;
   selected_hotel: any;
@@ -20,7 +21,7 @@ export class BookhotelComponent implements OnInit {
   discountedPrice: number;
   gst: number;
   netPayable: number;
-
+  netPayableFromLocalstorage: any;
   bookHotelForm: FormGroup;
   submitted: Boolean = false;
   constructor(private formBuilder: FormBuilder, private hotelService: HotelService, private router: Router, private activatedroute: ActivatedRoute) {
@@ -36,6 +37,10 @@ export class BookhotelComponent implements OnInit {
     this.selected_hotel = JSON.parse(sessionStorage.getItem("selected_hotel"));
     console.log(this.selected_hotel);
 
+
+    this.netPayableFromLocalstorage = JSON.parse(sessionStorage.getItem("netAmount"));
+
+    console.log(this.netPayableFromLocalstorage)
   }
 
   async ngOnInit() {
@@ -49,10 +54,12 @@ export class BookhotelComponent implements OnInit {
       children: [this.duration.children],
       email: ['', [Validators.required]],
       mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      price: [this.selected_hotel.price],
+      price: [this.netPayableFromLocalstorage.amount],
+
 
 
     });
+
 
   }
 
@@ -66,6 +73,7 @@ export class BookhotelComponent implements OnInit {
       if (this.bookHotelForm.invalid) return
       await this.hotelService.insertBooking(this.bookHotelForm.value, this.id)
       this.showForm = false;
+      this.showCart = false;
       this.showSuccessMessage = true;
     } catch (err) {
       console.log(err);
@@ -88,15 +96,13 @@ export class BookhotelComponent implements OnInit {
     this.discountedPrice = Math.round(this.price - this.discount);
     this.gst = Math.round(this.discountedPrice * 0.12)
     this.netPayable = Math.round(this.discountedPrice + this.gst)
-    console.log(this.discount);
-    console.log(this.netPayable);
+    // console.log(this.discount);
+    // console.log(this.netPayable);
+
+    sessionStorage.setItem("netAmount", JSON.stringify({ "amount": this.netPayable }))
+
 
   }
-
-
-
-
-
 
 
 }

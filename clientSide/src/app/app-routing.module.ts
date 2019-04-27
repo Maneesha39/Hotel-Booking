@@ -6,6 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { AddroomComponent } from './addroom/addroom.component';
 import { HotelDescriptionComponent } from './hotel-description/hotel-description.component';
 import { BookhotelComponent } from './bookhotel/bookhotel.component';
+import { LoginComponent } from './login/login.component';
+import { AdduserComponent } from './adduser/adduser.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -34,6 +37,16 @@ const routes: Routes = [
     path: 'hotels/book/:id',
     component: BookhotelComponent
   },
+
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+
+  {
+    path: 'adduser',
+    component: AdduserComponent
+  }
 ]
 
 

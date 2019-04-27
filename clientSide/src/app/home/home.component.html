@@ -2,21 +2,17 @@
 
   <nav class="topnav">
 
-    <span style="display:flex ;margin-left:900px; ">
+    <span style="display:flex ;margin-left:1000px; ">
 
-      <li class="nav-link"><span style="display:flex;"><i class="fa fa-fw fa-home"></i>
-          <p class="nav-link" style="margin-top:-10px;" (click)="toHome()">Home</p>
+      <li class="nav-link"><span style="display:flex;"><i class="fas fa-hotel"></i>
+          <p class="nav-link" style="margin-top:-10px;" (click)="addHotel()">Add Hotel</p>
         </span>
       </li>
-      <li class="nav-link"><span style="display:flex;"><i class="fa fa-fw fa-address-book"></i>
-          <p class="nav-link" style="margin-top:-10px;" (click)="aboutUs()">About</p>
+      <li class="nav-link"><span style="display:flex;"><i class="fas fa-door-closed"></i>
+          <p class="nav-link" style="margin-top:-10px;" (click)="addHotel()">Add Room</p>
         </span>
       </li>
-      <li class="nav-link"><span style="display:flex;"><i class="fa fa-fw fa-envelope"></i>
-          <p class="nav-link" style="margin-top:-10px;" (click)="contactUs()">Contact Us</p>
 
-        </span>
-      </li>
     </span>
   </nav>
 </div>
@@ -201,34 +197,6 @@
         </div><br>
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-lg" style="margin-left:80px;">SEARCH</button></div>
-      </form>
-    </div>
-  </div>
-</div>
-
-
-
-<div class="footer" id="footer1">
-  <div class="text">
-    <h3>Looking for travel inspiration?
-    </h3>
-    <h5>Luckily, our newsletter’s got it in spades & it can be delivered to your inbox</h5>
-  </div>
-  <div id="getmail">
-    <div style="margin-left:800px; margin-right:50px; margin-top:-70px;">
-      <form [formGroup]="footerForm" (ngSubmit)="onClick()">
-        <div class="form-group">
-          <input type="text" id="mail" formControlName="mailcheck" class="form-control"
-            placeholder="enter your email id" [ngClass]="{ 'is-invalid': submittedFooter && g.mailcheck.errors }">
-          <div *ngIf="submittedFooter && g.mailcheck.errors" class="invalid-feedback">
-            <div *ngIf="g.mailcheck.errors.required">Please enter mail id</div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <button class="btn btn-warning">Subscribe</button>
-        </div>
-        <div id="success">Subscribed Successfully</div>
       </form>
     </div>
   </div>

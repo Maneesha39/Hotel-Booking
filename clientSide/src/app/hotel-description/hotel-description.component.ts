@@ -33,6 +33,7 @@ export class HotelDescriptionComponent implements OnInit {
 
     sessionStorage.setItem("selected_hotel", JSON.stringify({ "id": this.singlehotel[0].id, "price": this.singlehotel[0].price }))
 
+
   }
 
   BookNow(id) {
