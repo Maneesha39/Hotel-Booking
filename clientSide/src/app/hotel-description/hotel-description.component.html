@@ -1,9 +1,9 @@
-<div class="jumbotron">
+<div class="jumbotron" style="background-color: #009688;height:120vh">
   <div class="container">
     <div class="row">
       <div class="col-md-9">
         <div *ngFor="let item of singlehotel">
-          <div class="card" style="width:100%;height:630px">
+          <div class="card" style="width:100%;height:590px">
             <div class="card-header" style="height:100px; ">
               <h3 style="text-align:left">{{item.name}}</h3>
               <span><small>{{item.place}}</small></span>,
@@ -24,9 +24,9 @@
 
               </div>
             </div>
-            <div class="card-footer" style="height:100px;background-color:lightgray">
+            <div class="card-footer" style="background-color: #E0E0E0;height:100px">
               <strong>
-                <p>Overview:</p>
+                Overview:
               </strong>
               <p>{{item.name}} is one of the famous and best hotels in {{item.city}}. Customers who are looking to book
                 a hotel at {{item.place}}, this hotel is the best option.</p>
