@@ -21,24 +21,18 @@ export class HotelDescriptionComponent implements OnInit {
     this.init();
   }
 
-
-
   async init() {
     let h = this.activatedroute.snapshot.params["id"];
     console.log(h)
     let hotels = await this.hotelService.getHotelsByID(h)
-
     this.singlehotel = hotels['hotels'];
     console.log(hotels);
-
     sessionStorage.setItem("selected_hotel", JSON.stringify({ "id": this.singlehotel[0].id, "price": this.singlehotel[0].price }))
-
 
   }
 
   BookNow(id) {
     this.router.navigateByUrl("hotels/book/" + id);
-
   }
 
 

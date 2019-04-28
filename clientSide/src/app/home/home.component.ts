@@ -23,34 +23,21 @@ export class HomeComponent implements OnInit {
     this.maxDate.setDate(this.maxDate.getDate() + 30);
 
   }
-
-
-
   async ngOnInit() {
-
-
-
     this.mainForm = this.formBuilder.group({
       // Validating fields...
       place: ['', [Validators.required]],
-
       checkin: ['', [Validators.required]],
-
       checkout: ['', [Validators.required]],
       rooms: ['', [Validators.required]],
       adults: ['', [Validators.required]],
       children: ['', [Validators.required]]
     });
 
-
-
     const cities = await this.hotelService.getCites()
 
     console.log(cities);
-
     this.cities = cities['cities'];
-
-
   }
   get f() { return this.mainForm.controls; }
 
@@ -76,14 +63,6 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['login'])
 
   }
-
-
-
-
-
-
-
-
 }
 
 
