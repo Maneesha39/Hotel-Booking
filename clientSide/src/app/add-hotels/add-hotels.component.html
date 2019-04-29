@@ -1,121 +1,125 @@
-<div class="jumbotron">
-  <div class="container">
-    <nav style="margin-left:80%">
-      <a routerLink="/addroom">Add room to a existing hotel</a>
-    </nav>
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <h3 style="text-align: center">Add Hotel</h3>
-        <form [formGroup]="addHotelForm" (ngSubmit)="onSubmit()">
-
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" formControlName="name" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-              <div *ngIf="f.name.errors.required">Name is mandatory</div>
-              <div *ngIf="f.name.errors.minlength"> Name should be minimum of 3 characters</div>
-              <div *ngIf="f.name.errors.maxlength"> Name should be maximum of 100 characters</div>
+<div class="maindiv">
+  <button type="button" class="btn btn-primary" routerLink="/addroom"
+    style="background-color: #6D4C41;margin-left:1100px;margin-top:10px;">Add
+    Room To Existing Hotel</button>
+  <div class="jumbotron" style="height:160vh;background-color: #009688;">
+    <div class="container">
+      <h3 style="margin-left:520px">Add Hotel</h3><br>
+      <div class="row">
+        <div class="col-md-5 offset-md-4" style="border:1px solid black">
+          <form style="margin-top:30px;margin-left:30px;margin-right:30px;color:white" [formGroup]="addHotelForm"
+            (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" formControlName="name" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is mandatory</div>
+                <div *ngIf="f.name.errors.minlength"> Name should be minimum of 3 characters</div>
+                <div *ngIf="f.name.errors.maxlength"> Name should be maximum of 100 characters</div>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label>Image URL</label>
-            <input type="text" formControlName="image" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.image.errors }" />
-            <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-              <div *ngIf="f.image.errors.required">Image URL is mandatory</div>
+            <div class="form-group">
+              <label>Image URL</label>
+              <input type="text" formControlName="image" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.image.errors }" />
+              <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                <div *ngIf="f.image.errors.required">Image URL is mandatory</div>
 
+              </div>
             </div>
-          </div>
 
 
 
-          <div class="form-group">
-            <label>Price</label>
-            <input type="number" formControlName="price" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
-            <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
-              <div *ngIf="f.price.errors.required">Price is required</div>
-              <div *ngIf="f.price.errors.min"> Price should be greater than zero</div>
+            <div class="form-group">
+              <label>Price</label>
+              <input type="number" formControlName="price" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+              <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                <div *ngIf="f.price.errors.required">Price is required</div>
+                <div *ngIf="f.price.errors.min"> Price should be greater than zero</div>
+              </div>
             </div>
-          </div>
 
 
-          <div class="form-group">
-            <label>Place</label>
-            <input type="text" formControlName="place" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.place.errors }" />
-            <div *ngIf="submitted && f.place.errors" class="invalid-feedback">
-              <div *ngIf="f.place.errors.required">Place is mandatory</div>
-              <div *ngIf="f.place.errors.minlength"> Place should be minimum of 3 characters</div>
-              <div *ngIf="f.place.errors.maxlength"> Place should not exceed 50 characters</div>
+            <div class="form-group">
+              <label>Place</label>
+              <input type="text" formControlName="place" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.place.errors }" />
+              <div *ngIf="submitted && f.place.errors" class="invalid-feedback">
+                <div *ngIf="f.place.errors.required">Place is mandatory</div>
+                <div *ngIf="f.place.errors.minlength"> Place should be minimum of 3 characters</div>
+                <div *ngIf="f.place.errors.maxlength"> Place should not exceed 50 characters</div>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label>Landmark</label>
-            <input type="text" formControlName="landmark" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.landmark.errors }" />
-            <div *ngIf="submitted && f.landmark.errors" class="invalid-feedback">
-              <div *ngIf="f.landmark.errors.required">Landmark is mandatory</div>
-              <div *ngIf="f.landmark.errors.minlength"> Landmark should be minimum of 3 characters</div>
-              <div *ngIf="f.landmark.errors.maxlength"> Landmark should not exceed 100 characters</div>
+            <div class="form-group">
+              <label>Landmark</label>
+              <input type="text" formControlName="landmark" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.landmark.errors }" />
+              <div *ngIf="submitted && f.landmark.errors" class="invalid-feedback">
+                <div *ngIf="f.landmark.errors.required">Landmark is mandatory</div>
+                <div *ngIf="f.landmark.errors.minlength"> Landmark should be minimum of 3 characters</div>
+                <div *ngIf="f.landmark.errors.maxlength"> Landmark should not exceed 100 characters</div>
 
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label>Pincode</label>
-            <input type="text" formControlName="pincode" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }" />
-            <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
-              <div *ngIf="f.pincode.errors.required">Pincode is mandatory</div>
-              <div *ngIf="f.pincode.errors.minlength"> Pincode must contain only 6 digits</div>
-              <div *ngIf="f.pincode.errors.maxlength"> Pincode must not exceed 6 digits</div>
+            <div class="form-group">
+              <label>Pincode</label>
+              <input type="text" formControlName="pincode" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }" />
+              <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
+                <div *ngIf="f.pincode.errors.required">Pincode is mandatory</div>
+                <div *ngIf="f.pincode.errors.minlength"> Pincode must contain only 6 digits</div>
+                <div *ngIf="f.pincode.errors.maxlength"> Pincode must not exceed 6 digits</div>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label>Contact Number</label>
-            <input type="text" formControlName="mobile" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
-            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
-              <div *ngIf="f.mobile.errors.required">Contact Number is mandatory</div>
-              <div *ngIf="f.mobile.errors.minlength"> Contact Number must contain only 10 digits</div>
-              <div *ngIf="f.mobile.errors.maxlength"> Contact Number must not exceed 10 digits</div>
+            <div class="form-group">
+              <label>Contact Number</label>
+              <input type="text" formControlName="mobile" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
+              <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                <div *ngIf="f.mobile.errors.required">Contact Number is mandatory</div>
+                <div *ngIf="f.mobile.errors.minlength"> Contact Number must contain only 10 digits</div>
+                <div *ngIf="f.mobile.errors.maxlength"> Contact Number must not exceed 10 digits</div>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label>City</label>
-            <input type="text" formControlName="city" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
-            <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
-              <div *ngIf="f.city.errors.required">City is mandatory</div>
-              <div *ngIf="f.city.errors.minlength"> City must contain minium of 3 characters</div>
-              <div *ngIf="f.city.errors.maxlength"> City should not exceed 30 characters</div>
+            <div class="form-group">
+              <label>City</label>
+              <input type="text" formControlName="city" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
+              <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                <div *ngIf="f.city.errors.required">City is mandatory</div>
+                <div *ngIf="f.city.errors.minlength"> City must contain minium of 3 characters</div>
+                <div *ngIf="f.city.errors.maxlength"> City should not exceed 30 characters</div>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label>Number of Rooms</label>
-            <input type="number" formControlName="rooms" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.rooms.errors }" />
-            <div *ngIf="submitted && f.rooms.errors" class="invalid-feedback">
-              <div *ngIf="f.rooms.errors.required">Number of Rooms shouldn't be empty</div>
-              <div *ngIf="f.rooms.errors.minlength"> Number of Rooms should be greater than zero</div>
+            <div class="form-group">
+              <label>Number of Rooms</label>
+              <input type="number" formControlName="rooms" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.rooms.errors }" />
+              <div *ngIf="submitted && f.rooms.errors" class="invalid-feedback">
+                <div *ngIf="f.rooms.errors.required">Number of Rooms shouldn't be empty</div>
+                <div *ngIf="f.rooms.errors.minlength"> Number of Rooms should be greater than zero</div>
 
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-md">SUBMIT</button>
-          </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-warning btn-md" style="background-color: #FFAB00">SUBMIT</button>
+            </div>
 
 
 
 
 
-        </form>
+          </form>
+
+
+        </div>
       </div>
     </div>
   </div>

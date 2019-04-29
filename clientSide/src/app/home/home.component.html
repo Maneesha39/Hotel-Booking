@@ -1,97 +1,8 @@
-<div style="background-color:#bdbdbd;  height: 50px; width:100%;">
-
-  <nav class="topnav">
-
-    <span style="display:flex ;margin-left:1150px; ">
-
-      <li class="nav-link"><span style="display:flex;"><i class="fas fa-hotel"></i>
-          <p class="nav-link" style="margin-top:-10px;" (click)="addHotel()">Add Hotel</p>
-        </span>
-      </li>
-
-
-    </span>
-  </nav>
-</div>
-
-<div class="total" style=" border: 2px solid black;">
-  <div class="card" id="about">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-6  text-center" style="margin-top:30px;">
-          <h1 class="card-title">WHO ARE WE</h1>
-        </div>
-        <div class="col-6">
-          <h4 class="card-title">We are a diverse team of over 1,200+ entrepreneurs, equipped with both the tech and
-            the passion to help our users find their ideal hotel,
-            in 55 global regions and 33 different languages.</h4>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-left:20px; margin-left:20px;">
-      <h4>Our team of creative and driven entrepreneurs come together to build a hotel search that is fast,
-        intuitive and unbiased, with the longstanding mission…</h4>
-
-      <h2> To be the traveler’s first and independent source of information for finding the ideal hotel.</h2>
-
-      <h4> We enable all our advertisers, from independent hoteliers to the largest hotel chains,
-        to grow their businesses by accessing our broad audience of monthly users.</h4>
-    </div>
-  </div>
-
-  <div class="card" id="contact">
-    <span style="display:flex;margin-top:40px; margin-left:40px;">
-      <h3>For any enquiry call...</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <i class="fas fa-mobile-alt" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
-      <h3>9876543210</h3>
-    </span><br>
-    <span style="display:flex; margin-left:240px;">
-      <h3>mail... </h3>&nbsp;&nbsp;&nbsp;
-      <i class="fa fa-fw fa-envelope" style="font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;
-      <h3>abc@gmail.com</h3>
-    </span>
-    <hr>
-    <nav class="topnav">
-      <h3 style="margin-left:270px;">Follow us on</h3><br>
-      <span style="display:flex;">
-
-        <li class="nav-link"><i class="fab fa-facebook" style="font-size:60px; margin-left:30px;"></i>
-        </li>
-
-        <li class="nav-link"><i class="fa fa-fw fa-envelope" style="font-size:60px; margin-left:30px;"></i>
-        </li>
-
-        <li class="nav-link"><i class="fab fa-twitter-square" style="font-size:60px; margin-left:30px;"></i>
-        </li>
-
-        <li class="nav-link"><i class="fab fa-instagram" style="font-size:60px; margin-left:30px;"></i>
-        </li>
-
-        <li class="nav-link"><i class="fab fa-youtube" style="font-size:60px; margin-left:30px;"></i>
-        </li>
-      </span>
-    </nav>
-  </div>
-
-  <img class="define" src="assets/bg8.jpg">
+<div class="total">
   <div class="card" id="maincard"><br>
     <div class="main" id="insidecard">
-
       <form [formGroup]="mainForm" (ngSubmit)="onSubmit()">
-        <!-- entire control is sent to formgroup -->
-
-        <!-- <div class="form-group">
-
-          <label>Select City:</label>
-          <input type="text" formControlName="place" class="form-control" placeholder="Enter place"
-            [ngClass]="{ 'is-invalid': submitted && f.place.errors }">
-            
-          <div *ngIf="submitted && f.place.errors" class="invalid-feedback">
-            <div *ngIf="f.place.errors.required">Place is required</div>
-          </div>
-        </div> -->
-        <div class="selectBoxWrap" style="margin-left:10px;"><label class="ico13 db padB5">Select City</label>
+        <div class="selectBoxWrap"><label class="ico13 db padB5">Select City</label>
           <div class="customSelect">
             <div class="form-group">
               <select name="Room" class="form-control" formControlName="place"
@@ -99,9 +10,7 @@
                 <div *ngIf="submitted && f.place.errors" class="invalid-feedback">
                   <div *ngIf="f.place.errors.required">Please select City</div>
                 </div>
-
                 <option *ngFor="let city of cities" [value]="city.city">{{city.city}}</option>
-
               </select>
             </div>
           </div>
@@ -138,7 +47,7 @@
                     <div *ngIf="submitted && f.rooms.errors" class="invalid-feedback">
 
                     </div>
-                    <option value="">Select</option>
+                    <option value="">---</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -163,7 +72,7 @@
                     <div *ngIf="submitted && f.adults.errors" class="invalid-feedback">
                       <div *ngIf="f.adults.errors.required">Please select Adults</div>
                     </div>
-                    <option value="">Select</option>
+                    <option value="">---</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -180,7 +89,7 @@
                     [ngClass]="{ 'is-invalid': submitted && f.children.errors }">
                     <div *ngIf="submitted && f.children.errors" class="invalid-feedback">
                     </div>
-                    <option value="">Select</option>
+                    <option value="">---</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
