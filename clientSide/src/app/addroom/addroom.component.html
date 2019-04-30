@@ -1,20 +1,9 @@
 <div class="jumbotron" style="height:160vh;background-color: #009688;">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 offset-md-3" style="border:1px solid black">
-        <h3 style="text-align: center">Add Room</h3>
-        <form [formGroup]="addRoomForm" (ngSubmit)="onSubmit()" style="color:white">
-
-          <!-- <div class="form-group">
-            <label>Hotel Name</label>
-            <input type="text" formControlName="name" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-              <div *ngIf="f.name.errors.required">Name is mandatory</div>
-              <div *ngIf="f.name.errors.minlength"> Name should be minimum of 3 characters</div>
-              <div *ngIf="f.name.errors.maxlength"> Name should be maximum of 100 characters</div>
-            </div>
-          </div> -->
+      <div class="card shadow p-4 mb-1 bg-white rounded col-md-6 offset-md-3 ">
+        <h3 style="text-align: center;">Add Room</h3>
+        <form [formGroup]="addRoomForm" (ngSubmit)="onSubmit()">
           <div class="selectBoxWrap">
             <label class="ico13 db padB5">Select Hotel</label>
             <div class="customSelect">
@@ -24,9 +13,7 @@
                   <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
                     <div *ngIf="f.name.errors.required">Please select City</div>
                   </div>
-
                   <option *ngFor="let name of names" [value]="name.name">{{name.name}}</option>
-
                 </select>
               </div>
             </div>

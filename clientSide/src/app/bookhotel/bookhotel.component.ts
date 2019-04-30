@@ -52,7 +52,7 @@ export class BookhotelComponent implements OnInit {
       rooms: [this.duration.rooms],
       adults: [this.duration.adults],
       children: [this.duration.children],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern(/[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}/)]],
       mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       price: [this.netPayableFromLocalstorage.amount],
 
@@ -91,7 +91,7 @@ export class BookhotelComponent implements OnInit {
 
   amountCalculation() {
 
-    this.price = this.displayHotel[0].price;
+    this.price = this.displayHotel[0].price * this.duration.rooms;
     this.discount = Math.round(this.price * 0.1);
     this.discountedPrice = Math.round(this.price - this.discount);
     this.gst = Math.round(this.discountedPrice * 0.12)

@@ -1,7 +1,7 @@
 <div class="maindiv">
   <div class="parent">
     <div class="card child" style="width:450px;">
-      <div class="card-header" style="background-color: #F4FF81">
+      <div class="card-header">
         <h2 style="text-align: center; ">Login</h2>
         <app-loginalert [success]="success" [message]="text"></app-loginalert>
       </div>
@@ -23,10 +23,11 @@
       <div class="card-footer" style="background-color:#EDE7F6">
         <div class="row">
           <div class="col-6">
-            <button type="button" class="btn btn-danger" (click)="adduser()">Sign Up</button>
+            <button type="button" style="margin-left:15px" class="btn btn-secondary" (click)="adduser()">Sign
+              Up</button>
           </div>
           <div class="col-6">
-            <button type="button" (click)="login()" class="btn btn-success">Sign In </button>
+            <button type="button" (click)="login()" style="margin-left:55px" class="btn btn-success">Sign In </button>
           </div>
         </div>
       </div>

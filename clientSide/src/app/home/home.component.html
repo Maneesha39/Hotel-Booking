@@ -7,11 +7,12 @@
             <div class="form-group">
               <select name="Room" class="form-control" formControlName="place"
                 [ngClass]="{ 'is-invalid': submitted && f.place.errors }">
-                <div *ngIf="submitted && f.place.errors" class="invalid-feedback">
-                  <div *ngIf="f.place.errors.required">Please select City</div>
-                </div>
+
                 <option *ngFor="let city of cities" [value]="city.city">{{city.city}}</option>
               </select>
+              <div *ngIf="submitted && f.place.errors" class="invalid-feedback">
+                <div *ngIf="f.place.errors.required">Please select City</div>
+              </div>
             </div>
           </div>
         </div>
@@ -42,12 +43,12 @@
             <div class="selectBoxWrap" style="margin-left:10px;"><label class="ico13 db padB5">Room(s)</label>
               <div class="customSelect">
                 <div class="form-group">
-                  <select name="Room" class="form-control" formControlName="rooms"
+                  <select class="form-control" formControlName="rooms"
                     [ngClass]="{ 'is-invalid': submitted && f.rooms.errors }">
                     <div *ngIf="submitted && f.rooms.errors" class="invalid-feedback">
-
                     </div>
-                    <option value="">---</option>
+                    <option *ngFor="let room of rooms">{{room}}</option>"
+                    <!-- <option value="">---</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -57,7 +58,7 @@
                     <option value="7">7</option>
                     <option value="8">8</option>
                     <option value="9">9</option>
-                    <option value="10">10</option>
+                    <option value="10">10</option> -->
 
                   </select>
                 </div>
@@ -67,19 +68,21 @@
               <label class="ico13 db padB5">Adult(s)</label>
               <div class="customSelect">
                 <div class="form-group">
-                  <select name="Adult" class="form-control" formControlName="adults"
+                  <select class="form-control" formControlName="adults"
                     [ngClass]="{ 'is-invalid': submitted && f.adults.errors }">
-                    <div *ngIf="submitted && f.adults.errors" class="invalid-feedback">
-                      <div *ngIf="f.adults.errors.required">Please select Adults</div>
-                    </div>
-                    <option value="">---</option>
+                    <option *ngFor="let adult of adults [getSelectedCategory()]">{{adult}}</option>
+                  </select>
+                  <div *ngIf="submitted && f.adults.errors" class="invalid-feedback">
+                    <!-- <div *ngIf="f.adults.errors.required">Please select Adults</div> -->
+                  </div>
+                  <!-- <option value="">---</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
-                    <option value="6">6</option>
-                  </select></div>
+                    <option value="6">6</option> -->
+                </div>
               </div>
             </div>
             <div class="selectBoxWrap" style="margin-left:30px;"><label class="ico13 db padB5">Children</label>
@@ -89,12 +92,13 @@
                     [ngClass]="{ 'is-invalid': submitted && f.children.errors }">
                     <div *ngIf="submitted && f.children.errors" class="invalid-feedback">
                     </div>
-                    <option value="">---</option>
+                    <option *ngFor="let child of children [getSelectedCategory()]">{{child}}</option>"
+                    <!-- <option value="">---</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option value="4">4</option> -->
                   </select></div>
               </div>
             </div>
