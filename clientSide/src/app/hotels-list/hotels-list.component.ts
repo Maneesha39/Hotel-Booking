@@ -16,20 +16,25 @@ export class HotelsListComponent implements OnInit {
   city = ''
 
   constructor(private hotelService: HotelService, private router: Router, private route: ActivatedRoute) {
+    //Taking the city as input from URL
+
     this.route.params.subscribe((params) => {
       this.city = params['city']
     })
   }
 
+  //db call for fetching hotels list as per the selected city
   async ngOnInit() {
     const hotels = await this.hotelService.getHotelsByPlace(this.city)
     this.hotels = hotels['hotels'];
-    console.log(hotels)
+    console.log("hotels", hotels)
+    console.log(this.hotels);
+
 
   }
+  //input function for hotel descrition component. Here we are passing the id of selected hotel to hotels description component
 
   viewHotel(id) {
-    debugger;
     this.router.navigateByUrl("hotels/hoteldetails/" + id);
 
   }

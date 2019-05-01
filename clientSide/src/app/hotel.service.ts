@@ -13,12 +13,6 @@ export class HotelService {
     return this.http.get("http://localhost:3000/cities/").toPromise();
   }
 
-  // getHotels() {
-  //   return this.http.get("http://localhost:3000/hotels/").toPromise();
-  // }
-
-
-
   insert(hotel: any) {
     return this.http.post("http://localhost:3000/hotels", hotel).toPromise();
   }
@@ -38,10 +32,7 @@ export class HotelService {
 
   getHotelsByPlace(place: any) {
     return this.http.get(`http://localhost:3000/hotels/${place}`).toPromise()
-    // .then(response => {
-    //   console.log(response);
-    // })
-    // .catch(console.log);
+
   }
 
   getHotelNames() {

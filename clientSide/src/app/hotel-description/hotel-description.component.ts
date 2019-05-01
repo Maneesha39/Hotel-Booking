@@ -21,16 +21,19 @@ export class HotelDescriptionComponent implements OnInit {
     this.init();
   }
 
+  //taking the id as input from URL by using activated route to view selected hotel.
   async init() {
     let h = this.activatedroute.snapshot.params["id"];
     console.log(h)
     let hotels = await this.hotelService.getHotelsByID(h)
     this.singlehotel = hotels['hotels'];
     console.log(hotels);
-    sessionStorage.setItem("selected_hotel", JSON.stringify({ "id": this.singlehotel[0].id, "price": this.singlehotel[0].price }))
+
+
 
   }
 
+  //Passing id of the selected hotel to bookhotel component
   BookNow(id) {
     this.router.navigateByUrl("hotels/book/" + id);
   }
