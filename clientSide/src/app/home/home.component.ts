@@ -92,6 +92,7 @@ export class HomeComponent implements OnInit {
       children: [this.children[1][0], [Validators.required]]
     });
 
+
     //To fech list of cities from db
     const cities = await this.hotelService.getCites()
     console.log(cities);
@@ -132,8 +133,26 @@ export class HomeComponent implements OnInit {
   }
 
 
+
+
 }
 
+// export function compareCheckOut(controlName: string, controlName1: string) {
+//   return (formGroup: FormGroup) => {
+//     const control = formGroup.controls[controlName];
+//     const control1 = formGroup.controls[controlName1];
+//     console.log(control.value.checkout, control.value.checkin)
+//     if (control.errors && control.errors.compareCheckOut) { return; }
+
+//     if (!(new Date(control.value.checkout) > new Date(control1.value.checkin))) {
+//       control.setErrors({ compareCheckOut: true });
+
+//     }
+//     else {
+//       control.setErrors(null);
+//     }
+//   }
+// }
 
 
 

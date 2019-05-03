@@ -78,11 +78,9 @@ export class BookhotelComponent implements OnInit {
   }
 
   async init() {
-
     const hotel = await this.hotelService.getHotelsByID(this.id);
     this.displayHotel = hotel['hotels']
     this.amountCalculation()
-
   }
 
   //function to calculate discount,discountprce, gst,netpayable amount

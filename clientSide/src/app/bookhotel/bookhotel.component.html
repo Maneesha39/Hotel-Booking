@@ -5,12 +5,10 @@
         <div class="card" style="width:110%">
           <div style="margin-left: 30px;margin-top: 30px;margin-right: 30px">
             <form [formGroup]="bookHotelForm" (ngSubmit)="onSubmit()">
-
               <div class="form-group">
                 <label>Check-In</label>
                 <input type="text" disabled value="{{duration.checkin|date:'dd/MM/yyyy'}}" formControlName="checkin"
                   class="form-control" />
-
               </div>
               <div class="form-group">
                 <label>Check-Out</label>
@@ -25,27 +23,21 @@
                   <label class="ico13 db padB5">Room(s)</label>
                   <input type="number" value="{{duration.rooms}}" disabled class="form-control" formControlName="rooms"
                     style="width:100px">
-
                 </div>
                 <div class="form-group">
                   <label class="ico13 db padB5">Adult(s)</label>
                   <input type="number" style="text-align: center" disabled value="{{duration.adults}}"
                     class="form-control" formControlName="adults" style="width:100px">
-
-
                 </div>
                 <div class="form-group">
                   <label class="ico13 db padB5"> Children</label>
-
                   <input type="number" style="text-align: center" disabled value="{{duration.children}}"
                     class="form-control" formControlName="children" style="width:100px">
-
                 </div>
               </span>
               <div class="form-group">
                 <label>Price</label>
                 <input type="number" disabled value="{{netPayable}}" formControlName="price" class="form-control" />
-
               </div>
               <div class="form-group">
                 <label>Name</label>
@@ -76,8 +68,6 @@
                   <div *ngIf="f.mobile.errors.maxlength"> Contact Number must not exceed 10 digits</div>
                 </div>
               </div>
-
-
               <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-md">Book Now</button>
               </div>
@@ -92,13 +82,11 @@
               <h5>Payable Amount: </h5>
               <h5 style="margin-left:80px">
                 {{netPayable | currency:'INR'}}</h5>
-
             </div>
             <div class="card-body col-12" style="display: flex">
               <div class="row">
                 <div class="col-12">
                   <h6>{{item.name}}</h6>
-
                   <span><small class="text-muted">{{item.place}}</small></span>,
                   <span><small class="text-muted">{{item.landmark}}</small></span>,
                   <span><small class="text-muted">{{item.city}}</small></span>,
@@ -106,18 +94,12 @@
                   <span><small class="text-muted">{{item.mobile}}</small></span>
                 </div>
                 <hr>
-
-
-
-
                 <div class="col-12">
-
                   <div class="row">
                     <div class="col-4">
                       <small class="text-muted">Aminities:</small><br>
                       <i class="fas fa-check" style="color:green"></i>&nbsp;&nbsp;<small class="text-muted">Free
                         Wifi</small><br>
-
                       <small class="text-muted">Inclusions</small><br>
                       <i class="fas fa-check" style="color:green"></i>&nbsp;&nbsp;
                       <small class="text-muted">Free Breakfast</small><br>
@@ -130,8 +112,6 @@
                   </div>
                   <hr>
                 </div>
-
-
                 <div class="col-12" style="display: flex">
                   <div class="row">
                     <div style="width:100px; height:40px; margin-left:10px"><small
@@ -151,16 +131,10 @@
                       <small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{duration.children}}</small>
                     </div>
                   </div>
-
                 </div>
                 <hr>
-
-
-
                 <div class=" col-12 ">
                   <div style="display:flex" style="width:100%;">
-
-
                     <div style="margin-left:30px">
                       <span><small>Booking
                           Price:<span style="margin-left:100px">{{price | currency:'INR'}}</span></small></span><br>
@@ -178,35 +152,18 @@
                             Payable:<span
                               style="margin-left:90px">&nbsp;&nbsp;&nbsp;{{netPayable | currency:'INR'}}</span></strong></small></span><br>
                     </div>
-
-
-
                   </div>
-
                 </div>
-
-
-
-
-
-
-
-
               </div>
             </div>
-
           </div>
         </div>
       </div>
-
-
     </div>
-    <div class="col-md-6" style="width:100%" *ngIf="showSuccessMessage">
+    <div class="col-md-6" style="width:100%;height:120%" *ngIf="showSuccessMessage">
       <div class="alert alert-success" role="alert">
         <h4 class="alert-heading">Thank You!</h4>
         <p>Your booking has been successfull ! Please visit again </p>
-
-
       </div>
     </div>
   </div>
