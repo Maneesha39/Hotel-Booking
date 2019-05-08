@@ -66,6 +66,7 @@
                   <div *ngIf="f.mobile.errors.required">Contact Number is mandatory</div>
                   <div *ngIf="f.mobile.errors.minlength"> Contact Number must contain only 10 digits</div>
                   <div *ngIf="f.mobile.errors.maxlength"> Contact Number must not exceed 10 digits</div>
+                  <div *ngIf="f.mobile.errors.pattern">Enter Valid Mobile number </div>
                 </div>
               </div>
               <div class="form-group">

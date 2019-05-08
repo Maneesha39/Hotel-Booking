@@ -54,7 +54,7 @@ export class BookhotelComponent implements OnInit {
       adults: [this.duration.adults],
       children: [this.duration.children],
       email: ['', [Validators.required, Validators.email, Validators.pattern(/[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}/)]],
-      mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/[0-9]{10}/)]],
       price: [this.netPayableFromLocalstorage.amount],
     });
   }
